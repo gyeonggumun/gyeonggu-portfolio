@@ -790,8 +790,29 @@ details[open] > summary .when-closed {
   border-color: transparent;
 }
 .slide-stage {
-  container-type: inline-size;
   touch-action: pan-y;
+  overflow: auto;
+}
+.slide-canvas {
+  container-type: inline-size;
+  width: 100%;
+}
+.slide-stage.is-zoomed {
+  touch-action: pan-x pan-y;
+  max-height: 60dvh;
+}
+.slide-stage.is-zoomed .slide-canvas {
+  min-width: 900px;
+}
+.zoom-toggle {
+  display: none;
+  border: 0;
+  background: transparent;
+  padding: 8px 0;
+  font-size: 11px;
+  color: #4d6141;
+  align-items: center;
+  gap: 6px;
 }
 .presentation-slide {
   aspect-ratio: 16/9;
@@ -1428,9 +1449,10 @@ details[open] > summary .when-closed {
     padding: 12px 0;
   }
   .keyboard-hint {
-    font-size: 8px;
-    max-width: 115px;
-    line-height: 1.7;
+    display: none;
+  }
+  .zoom-toggle {
+    display: inline-flex;
   }
   .slide-navigation {
     gap: 7px;

@@ -112,6 +112,7 @@ function SlideContent({ project, slide }) {
 
 export default function ProjectViewer({ project, onClose }) {
   const [index, setIndex] = useState(0);
+  const [zoomed, setZoomed] = useState(false);
   const dialogRef = useRef(null);
   const touch = useRef(null);
   const slide = project.slides[index];
@@ -185,13 +186,13 @@ export default function ProjectViewer({ project, onClose }) {
           </button>
         </header>
         <div
-          className="slide-stage"
+          className={`slide-stage${zoomed ? " is-zoomed" : ""}`}
           onTouchStart={(event) => {
             const point = event.changedTouches[0];
             touch.current = { x: point.clientX, y: point.clientY };
           }}
           onTouchEnd={(event) => {
-            if (!touch.current) return;
+            if (!touch.current || zoomed) return;
             const point = event.changedTouches[0];
             const dx = point.clientX - touch.current.x;
             const dy = point.clientY - touch.current.y;
@@ -200,34 +201,44 @@ export default function ProjectViewer({ project, onClose }) {
             touch.current = null;
           }}
         >
-          <article
-            className={`presentation-slide layout-${slide.layout}`}
-            key={index}
-            aria-label={`${index + 1}페이지: ${slide.title}`}
-          >
-            <div className="slide-topline">
-              <span>{projectName(project)}</span>
-              <span>
-                {String(index + 1).padStart(2, "0")} /{" "}
-                {String(project.slides.length).padStart(2, "0")}
-              </span>
-            </div>
-            <h3>{slide.title}</h3>
-            <div className="slide-content">
-              <SlideContent project={project} slide={slide} />
-            </div>
-            <div className="slide-footer">
-              <span>
-                {project.category === "team"
-                  ? "TEAM PROJECT"
-                  : "PERSONAL PROJECT"}
-              </span>
-              <span>문경구 · PORTFOLIO</span>
-            </div>
-          </article>
+          <div className="slide-canvas">
+            <article
+              className={`presentation-slide layout-${slide.layout}`}
+              key={index}
+              aria-label={`${index + 1}페이지: ${slide.title}`}
+            >
+              <div className="slide-topline">
+                <span>{projectName(project)}</span>
+                <span>
+                  {String(index + 1).padStart(2, "0")} /{" "}
+                  {String(project.slides.length).padStart(2, "0")}
+                </span>
+              </div>
+              <h3>{slide.title}</h3>
+              <div className="slide-content">
+                <SlideContent project={project} slide={slide} />
+              </div>
+              <div className="slide-footer">
+                <span>
+                  {project.category === "team"
+                    ? "TEAM PROJECT"
+                    : "PERSONAL PROJECT"}
+                </span>
+                <span>문경구 · PORTFOLIO</span>
+              </div>
+            </article>
+          </div>
         </div>
         <div className="viewer-controls">
           <span className="keyboard-hint">키보드 ← → 또는 좌우로 넘기기</span>
+          <button
+            className="zoom-toggle"
+            onClick={() => setZoomed((value) => !value)}
+            aria-pressed={zoomed}
+          >
+            {zoomed ? "화면에 맞추기" : "확대 보기"}
+            <Icon name="diagonal" size={13} />
+          </button>
           <div className="slide-navigation">
             <button
               className="icon-button"
