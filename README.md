@@ -90,6 +90,8 @@ npm run preview
 
 GitHub: [gyeonggumun/gyeonggu-portfolio](https://github.com/gyeonggumun/gyeonggu-portfolio)
 
+Vercel: [gyeonggu-portfolio.vercel.app](https://gyeonggu-portfolio.vercel.app)
+
 Vercel 설정은 [`vercel.json`](vercel.json)에 있습니다. 빌드 명령은 `npm run build`, 출력 폴더는 `dist`입니다. 환경 변수나 별도 서버는 필요하지 않습니다.
 
 Vercel 프로젝트 이름은 `gyeonggu-portfolio`이며, 현재 배포는 소스 직접 업로드 방식으로 진행합니다. GitHub 저장소 연동은 Vercel GitHub 통합 권한 설정 후 별도로 연결해야 하며, 현재 GitHub 푸시만으로 자동 배포되지는 않습니다.
