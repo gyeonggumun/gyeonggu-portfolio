@@ -1,6 +1,6 @@
 # 몽향 프로젝트 콘텐츠 근거
 
-팀 프로젝트 01은 `src/data/monghyang.js`에서 관리합니다. 문제 정의 → 나의 역할 → 접근과 의사결정 → 결과 → 회고를 7개의 16:9 페이지에 나누었습니다. 설명과 관련 화면을 같은 페이지에 배치했습니다.
+팀 프로젝트 01은 `src/data/monghyang.js`에서 관리합니다. 문제 정의 → 나의 역할 → 접근과 의사결정 → 결과 → 회고를 4개의 16:9 페이지에 나누었습니다. 왼쪽 설명과 오른쪽의 작은 이미지 3~4개를 한 페이지에 배치하고, 마지막 페이지에 팀 수상 자료와 두 시연영상을 모았습니다.
 
 ## 담당 범위와 프로젝트 정보
 
@@ -24,7 +24,9 @@
 
 ## 이미지 원본
 
-사용자가 제공한 [몽향 사진자료 폴더](https://drive.google.com/drive/folders/17o_XVSiuaMlgyJOdacFxyyCkbeeHPWZ7)의 원본 화면을 사용했습니다. 선택한 7개 이미지는 `public/images/monghyang/`에 보관하며, 잘라내지 않고 전체 화면을 표시합니다.
+사용자가 제공한 [몽향 사진자료 폴더](https://drive.google.com/drive/folders/17o_XVSiuaMlgyJOdacFxyyCkbeeHPWZ7)의 원본 화면을 사용했습니다. 선택한 7개 화면 이미지는 `public/images/monghyang/`에 보관하며, 잘라내지 않고 전체 화면을 표시합니다. 작은 화면은 클릭하면 원본으로 볼 수 있습니다.
+
+카드 앞면과 첫 페이지의 `cover.png`는 전통주·숲·양조장을 표현한 새 대표 일러스트입니다. built-in image_gen으로 제작했으며, [제작 프롬프트](monghyang-cover-prompt.md)를 보관했습니다. 마지막 페이지의 상장 2개는 기존 공개용 프로필 증빙입니다.
 
 | 파일 | Drive 파일 ID | 내용 |
 | --- | --- | --- |
