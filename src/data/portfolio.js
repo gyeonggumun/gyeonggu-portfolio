@@ -1,4 +1,5 @@
 import { monghyang } from "./monghyang";
+import { safestay } from "./safestay";
 
 // 실제 내용은 이 파일에서 교체합니다. 빈 값은 화면에서 준비 중 상태로 표시됩니다.
 export const profile = {
@@ -126,11 +127,7 @@ const makeProject = (id, category, featured, number, layouts) => ({
 
 export const projects = [
   monghyang,
-  makeProject("team-02", "team", true, "02", [
-    ["overview", "프로젝트 개요"],
-    ["process", "문제 해결 과정"],
-    ["results", "결과와 회고"],
-  ]),
+  safestay,
   makeProject("team-03", "team", true, "03", [
     ["overview", "프로젝트 개요"],
     ["split", "설계와 구조"],

@@ -76,7 +76,7 @@ function SlideContent({ project, slide }) {
             ))}
             {slide.sources?.length > 0 && (
               <div className="case-study-sources">
-                구현 코드 · {slide.sources.map((item) => <a key={item.url} href={item.url} target="_blank" rel="noreferrer">{item.title} ↗</a>)}
+                {slide.sourceLabel || "구현 코드"} · {slide.sources.map((item) => <a key={item.url} href={item.url} target="_blank" rel="noreferrer">{item.title} ↗</a>)}
               </div>
             )}
           </div>
