@@ -4,6 +4,10 @@ import {
   awards,
   education,
   experience,
+  academicHistory,
+  examinations,
+  skills,
+  workingStyle,
   projects,
 } from "./data/portfolio";
 import Icon from "./components/Icon";
@@ -45,11 +49,12 @@ function CredentialRow({ entry, type, number }) {
           </span>
         </div>
         <span className="credential-action">
-          {isAward ? "인증서" : "수료증"}
+          {entry.image ? (isAward ? "인증서" : "수료증") : "상세"}
           <Icon name="down" size={16} />
         </span>
       </summary>
       <div className="credential-body">
+        {entry.description && <p className="credential-description">{entry.description}</p>}
         {entry.image ? (
           <a href={entry.image} target="_blank" rel="noreferrer">
             <img
@@ -62,13 +67,32 @@ function CredentialRow({ entry, type, number }) {
           <div className="credential-placeholder">
             <Icon name="file" size={30} />
             <p>
-              {isAward ? "상장 또는 인증서" : "수료증"} 이미지가 들어갈
-              자리입니다.
+              {entry.pendingLabel || `${isAward ? "상장 또는 인증서" : "수료증"} 추가 예정`}
             </p>
           </div>
         )}
       </div>
     </details>
+  );
+}
+
+function BackgroundGroup({ title, label, entries, className = "" }) {
+  return (
+    <div className="journey-group">
+      <div className="group-label">
+        <h3>{title}</h3>
+        <span>{label}</span>
+      </div>
+      <div className={className || "experience-list"}>
+        {entries.map((entry) => (
+          <article className="experience-entry" key={entry.id || entry.title}>
+            {entry.period && <span>{entry.period}</span>}
+            <h4>{entry.title}</h4>
+            <p>{entry.description}</p>
+          </article>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -240,7 +264,12 @@ export default function App() {
                     <span>{entry.period}</span>
                     <h4>{entry.company}</h4>
                     <p>{entry.role}</p>
-                    <p>{entry.description}</p>
+                    {entry.description && <p>{entry.description}</p>}
+                    {entry.responsibilities && (
+                      <ul className="responsibility-list">
+                        {entry.responsibilities.map((item) => <li key={item}>{item}</li>)}
+                      </ul>
+                    )}
                   </article>
                 ))
               ) : (
@@ -254,6 +283,10 @@ export default function App() {
               )}
             </div>
           </div>
+          <BackgroundGroup title="학력" label="ACADEMIC BACKGROUND" entries={academicHistory} />
+          <BackgroundGroup title="시험 이력" label="EXAMINATIONS" entries={examinations} />
+          <BackgroundGroup title="기술과 활용 경험" label="SKILLS" entries={skills} className="skills-grid" />
+          <BackgroundGroup title="일하는 방식" label="HOW I WORK" entries={workingStyle} />
         </section>
 
         <section className="project-section section" id="projects">
