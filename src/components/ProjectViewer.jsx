@@ -19,10 +19,14 @@ function EmptyField({ label, children, className = "" }) {
   );
 }
 
-function SlideImage({ src, label = "이미지를 추가할 자리" }) {
-  return src ? (
-    <img className="slide-image" src={src} alt={label} />
-  ) : (
+function SlideImage({ src, label = "이미지를 추가할 자리", enlarge = false }) {
+  if (src) {
+    const image = <img className="slide-image" src={src} alt={label} />;
+    return enlarge ? (
+      <a className="slide-image-link" href={src} target="_blank" rel="noreferrer" title="클릭하면 원본 이미지를 새 탭에서 엽니다" aria-label={`${label} 원본 이미지 보기`}>{image}</a>
+    ) : image;
+  }
+  return (
     <div className="slide-image slide-image-empty">
       <Icon name="image" size={30} />
       <span>{label}</span>
@@ -30,8 +34,71 @@ function SlideImage({ src, label = "이미지를 추가할 자리" }) {
   );
 }
 
+function DemoVideo({ video, poster }) {
+  const [playing, setPlaying] = useState(false);
+  return (
+    <div className="demo-video">
+      <div className="demo-player">
+        {playing ? (
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${video.id}?rel=0`}
+            title={video.title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerPolicy="strict-origin-when-cross-origin"
+            allowFullScreen
+          />
+        ) : (
+          <button className="demo-launch" onClick={() => setPlaying(true)} aria-label={`${video.title} 동영상 불러오기`}>
+            <img src={poster} alt="" />
+            <span className="demo-play" aria-hidden="true">▶</span>
+            <span className="demo-launch-label">동영상 보기</span>
+          </button>
+        )}
+      </div>
+      <h4>{video.title}</h4>
+      <p>{video.description}</p>
+      <a href={video.url} target="_blank" rel="noreferrer">YouTube에서 보기 ↗</a>
+    </div>
+  );
+}
+
 function SlideContent({ project, slide }) {
   switch (slide.layout) {
+    case "case-study":
+      return (
+        <div className="slide-case-study">
+          <div className="case-study-copy">
+            {slide.sections.map((section) => (
+              <section key={section.title}>
+                <h4>{section.title}</h4>
+                <p>{section.text}</p>
+              </section>
+            ))}
+            {slide.sources?.length > 0 && (
+              <div className="case-study-sources">
+                구현 코드 · {slide.sources.map((item) => <a key={item.url} href={item.url} target="_blank" rel="noreferrer">{item.title} ↗</a>)}
+              </div>
+            )}
+          </div>
+          <div className="case-study-figures">
+            {slide.figures.map((figure) => (
+              <figure key={figure.image}>
+                <SlideImage src={figure.image} label={figure.title} enlarge />
+                <figcaption><strong>{figure.title}</strong><span>{figure.text}</span></figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      );
+    case "videos":
+      return (
+        <div className="slide-videos">
+          {project.videos.map((video) => (
+            <DemoVideo key={video.id} video={video} poster={video.poster} />
+          ))}
+          <p className="video-note">테스트 환경 시연 · 플레이어가 열리지 않으면 YouTube 링크로 확인할 수 있습니다.</p>
+        </div>
+      );
     case "overview":
       return (
         <div className="slide-overview">
@@ -70,7 +137,8 @@ function SlideContent({ project, slide }) {
             <div key={i}>
               <SlideImage
                 src={slide.items[i]?.image}
-                label={`화면 ${String(i + 1).padStart(2, "0")}`}
+                label={slide.items[i]?.title || `화면 ${String(i + 1).padStart(2, "0")}`}
+                enlarge
               />
               <EmptyField label={slide.items[i]?.title || "화면 설명"}>
                 {slide.items[i]?.text}
@@ -224,7 +292,7 @@ export default function ProjectViewer({ project, onClose }) {
                     ? "TEAM PROJECT"
                     : "PERSONAL PROJECT"}
                 </span>
-                <span>문경구 · PORTFOLIO</span>
+                <span>{project.technologies?.length ? project.technologies.join(" · ") : "문경구 · PORTFOLIO"}</span>
               </div>
             </article>
           </div>
@@ -274,7 +342,7 @@ export default function ProjectViewer({ project, onClose }) {
             </button>
           ))}
         </nav>
-        {(project.repository || project.website) && (
+        {(project.repository || project.website || project.videos?.length) && (
           <div className="viewer-links">
             {project.repository && (
               <a href={project.repository} target="_blank" rel="noreferrer">
@@ -286,6 +354,11 @@ export default function ProjectViewer({ project, onClose }) {
                 웹사이트 <Icon name="diagonal" size={14} />
               </a>
             )}
+            {project.videos?.map((video) => (
+              <a key={video.id} href={video.url} target="_blank" rel="noreferrer">
+                {video.title} <Icon name="diagonal" size={14} />
+              </a>
+            ))}
           </div>
         )}
       </div>
