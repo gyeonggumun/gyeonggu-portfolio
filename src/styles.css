@@ -146,6 +146,18 @@ svg {
 .hero {
   padding-top: 48px;
 }
+.hero,
+.journey {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+.hero p,
+.hero li,
+.journey p,
+.journey li,
+.credential-copy h4 {
+  text-wrap: pretty;
+}
 .hero-main {
   display: grid;
   grid-template-columns: 212px 1fr;
@@ -155,30 +167,7 @@ svg {
 .portrait {
   height: 228px;
   position: relative;
-  background: #f0f2ed;
-  border: 1px solid #e5e8e1;
   overflow: hidden;
-}
-.portrait:before,
-.portrait:after {
-  content: "";
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  border-color: #b6bdb3;
-  pointer-events: none;
-}
-.portrait:before {
-  left: 12px;
-  top: 12px;
-  border-left: 1px solid;
-  border-top: 1px solid;
-}
-.portrait:after {
-  right: 12px;
-  bottom: 12px;
-  border-right: 1px solid;
-  border-bottom: 1px solid;
 }
 .portrait > img {
   width: 100%;
@@ -209,8 +198,14 @@ svg {
   letter-spacing: 1.8px;
   color: #9aa195;
 }
-.hero-copy > .eyebrow {
+.hero-identity > .eyebrow {
   margin-bottom: 12px;
+}
+.profile-school {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--muted);
 }
 .name-line {
   display: flex;
@@ -255,6 +250,7 @@ svg {
   height: 3px;
   border-radius: 50%;
   background: #84917e;
+  flex-shrink: 0;
 }
 .hero-bottom {
   display: flex;
@@ -418,6 +414,7 @@ svg {
 }
 .credential-copy {
   flex: 1;
+  min-width: 0;
 }
 .credential-copy h4 {
   font-size: 14px;
@@ -433,6 +430,7 @@ svg {
 }
 .credential-action {
   display: flex;
+  flex-shrink: 0;
   gap: 14px;
   align-items: center;
   font-size: 11px;
@@ -1209,23 +1207,21 @@ details[open] > summary .when-closed {
   .hero-main {
     grid-template-columns: 100px 1fr;
     gap: 22px;
-    align-items: start;
+    align-items: center;
+  }
+  .hero-copy {
+    display: contents;
+  }
+  .hero-copy > .introduction,
+  .hero-copy > .highlights {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+  .profile-school {
+    font-size: 12px;
   }
   .portrait {
     height: 132px;
-  }
-  .portrait:before,
-  .portrait:after {
-    width: 10px;
-    height: 10px;
-  }
-  .portrait:before {
-    left: 8px;
-    top: 8px;
-  }
-  .portrait:after {
-    right: 8px;
-    bottom: 8px;
   }
   .portrait-placeholder {
     gap: 8px;
@@ -1243,7 +1239,7 @@ details[open] > summary .when-closed {
     letter-spacing: 0.8px;
     bottom: 10px;
   }
-  .hero-copy > .eyebrow {
+  .hero-identity > .eyebrow {
     font-size: 8px;
     margin-bottom: 7px;
     letter-spacing: 1.1px;
