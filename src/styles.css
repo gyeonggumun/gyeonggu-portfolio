@@ -952,6 +952,54 @@ details[open] > summary .when-closed {
   font-weight: 500;
   color: var(--ink);
 }
+.slide-case-study.is-dense {
+  grid-template-columns: 1.05fr 1fr;
+  gap: 2.8cqw;
+}
+.is-dense .case-study-copy {
+  justify-content: flex-start;
+  gap: 1.2cqw;
+  padding-top: 0.3cqw;
+}
+.is-dense .case-study-copy h4 {
+  font-size: 1.2cqw;
+  margin-bottom: 0.4cqw;
+}
+.is-dense .case-study-copy p {
+  font-size: 1.07cqw;
+  line-height: 1.75;
+}
+.is-dense .case-study-figures {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2cqw;
+  border-left: 1px dashed #d4dbcf;
+  padding-left: 2cqw;
+}
+.is-dense .case-study-figures > figure:first-child:nth-last-child(3) {
+  grid-row: span 2;
+}
+.is-dense .case-study-figures figcaption {
+  font-size: 0.82cqw;
+  line-height: 1.5;
+}
+.is-dense .case-study-figures figcaption strong {
+  font-size: 0.95cqw;
+  margin-bottom: 0.2cqw;
+}
+.demo-video.is-compact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 0;
+}
+.demo-video.is-compact h4 {
+  margin: 0.6cqw 0 0;
+  font-size: 1.05cqw;
+}
+.demo-video.is-compact > a {
+  margin-top: 0.3cqw;
+  font-size: 0.85cqw;
+}
 .slide-videos {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));

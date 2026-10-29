@@ -34,10 +34,10 @@ function SlideImage({ src, label = "이미지를 추가할 자리", enlarge = fa
   );
 }
 
-function DemoVideo({ video, poster }) {
+function DemoVideo({ video, poster, compact = false }) {
   const [playing, setPlaying] = useState(false);
   return (
-    <div className="demo-video">
+    <div className={`demo-video${compact ? " is-compact" : ""}`}>
       <div className="demo-player">
         {playing ? (
           <iframe
@@ -56,7 +56,7 @@ function DemoVideo({ video, poster }) {
         )}
       </div>
       <h4>{video.title}</h4>
-      <p>{video.description}</p>
+      {!compact && <p>{video.description}</p>}
       <a href={video.url} target="_blank" rel="noreferrer">YouTube에서 보기 ↗</a>
     </div>
   );
@@ -66,7 +66,7 @@ function SlideContent({ project, slide }) {
   switch (slide.layout) {
     case "case-study":
       return (
-        <div className="slide-case-study">
+        <div className={`slide-case-study${slide.dense ? " is-dense" : ""}`}>
           <div className="case-study-copy">
             {slide.sections.map((section) => (
               <section key={section.title}>
@@ -86,6 +86,9 @@ function SlideContent({ project, slide }) {
                 <SlideImage src={figure.image} label={figure.title} enlarge />
                 <figcaption><strong>{figure.title}</strong><span>{figure.text}</span></figcaption>
               </figure>
+            ))}
+            {slide.includeVideos && project.videos.map((video) => (
+              <DemoVideo key={video.id} video={video} poster={video.poster} compact />
             ))}
           </div>
         </div>
