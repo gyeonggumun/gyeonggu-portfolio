@@ -6,7 +6,7 @@ export const profile = {
   introduction:
     "사용자 경험과 서비스 안정성을 함께 고민하는 개발자입니다. 웹 개발과 DB·보안 인프라 경험을 바탕으로, 개발 단계부터 보안을 고려하는 시큐어 코딩 분야에서 성장하고 싶습니다.",
   highlights: [
-    "React·TypeScript 기반 UI 개발과 API 연동",
+    "웹 UI 개발과 API 연동 경험",
     "팀장 경험을 바탕으로 한 역할 조율과 진행 상황 공유",
     "구현·테스트·회고를 기록하며 개선하는 개발 습관",
   ],
@@ -14,7 +14,7 @@ export const profile = {
   resume: null,
   github: "https://github.com/gyeonggumun",
   email: "lion989072@gmail.com",
-  stack: ["React", "TypeScript", "Java", "Python", "MySQL", "Docker", "k3s"],
+  stack: ["React", "Node.js", "Java", "Python", "MySQL", "Docker", "k3s"],
 };
 
 export const awards = [
