@@ -2,6 +2,7 @@
 export const profile = {
   name: "문경구",
   role: "Web Developer",
+  school: "동서대학교 컴퓨터공학과",
   introduction:
     "사용자 경험과 서비스 안정성을 함께 고민하는 개발자입니다. 웹 개발과 DB·보안 인프라 경험을 바탕으로, 개발 단계부터 보안을 고려하는 시큐어 코딩 분야에서 성장하고 싶습니다.",
   highlights: [
@@ -86,15 +87,6 @@ export const experience = [
   },
 ];
 
-export const academicHistory = [
-  { id: "university", period: "2020.03 ~ 2026.02", title: "동서대학교", description: "컴퓨터공학과 · 졸업 · 학점 3.5 / 4.5" },
-  { id: "high-school", period: "2017.03 ~ 2020.02", title: "경영고등학교", description: "금융과 · 졸업" },
-];
-
-export const examinations = [
-  { id: "engineer-information", period: "2026.10.01", title: "정보처리기사 필기 시험", description: "한국산업인력공단 · 필기 시험 이력" },
-];
-
 export const skills = [
   { title: "React / TypeScript", description: "UI·컴포넌트 구성, 반응형 화면과 설문 제작 서비스 구현" },
   { title: "Java / Spring", description: "Java·Spring MVC와 REST API 학습 및 구현 실습" },
@@ -104,12 +96,6 @@ export const skills = [
   { title: "Snort / Graylog", description: "IDS/IPS 탐지 규칙 작성, 로그 수집과 관제 연동" },
   { title: "Git / GitHub", description: "브랜치·PR·커밋을 활용한 협업과 작업 문서화" },
   { title: "AI 활용", description: "AI가 생성한 코드와 문서 초안을 검토하고 직접 테스트·검증" },
-];
-
-export const workingStyle = [
-  { title: "개발 단계부터 보안 고려", description: "사용자에게 보이는 기능과 함께 데이터 처리·보호 과정을 살핍니다. 입력값 검증, 인증·인가, 데이터 접근 제어를 꾸준히 학습하고 있습니다." },
-  { title: "문제를 기록하고 함께 해결", description: "문제의 원인과 시도한 방법을 먼저 정리합니다. 혼자 오래 붙잡기보다 진행 상황을 공유하고 팀원의 의견을 받아들이려고 노력합니다." },
-  { title: "역할과 일정을 함께 조율", description: "팀장 경험을 통해 팀원의 진행 상황과 전체 일정을 함께 살피는 태도를 배웠습니다. 서로의 의견을 존중하며 맡은 일을 책임 있게 수행합니다." },
 ];
 
 const emptySlide = (layout, title) => ({

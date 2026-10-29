@@ -4,10 +4,7 @@ import {
   awards,
   education,
   experience,
-  academicHistory,
-  examinations,
   skills,
-  workingStyle,
   projects,
 } from "./data/portfolio";
 import Icon from "./components/Icon";
@@ -147,10 +144,13 @@ export default function App() {
               )}
             </div>
             <div className="hero-copy">
-              <p className="eyebrow">HELLO, I'M</p>
-              <div className="name-line">
-                <h1 id="intro-name">{profile.name}</h1>
-                <span>{profile.role}</span>
+              <div className="hero-identity">
+                <p className="eyebrow">HELLO, I'M</p>
+                <div className="name-line">
+                  <h1 id="intro-name">{profile.name}</h1>
+                  <span>{profile.role}</span>
+                </div>
+                <p className="profile-school">{profile.school}</p>
               </div>
               <p className="introduction">{profile.introduction}</p>
               <ul className="highlights">
@@ -283,10 +283,7 @@ export default function App() {
               )}
             </div>
           </div>
-          <BackgroundGroup title="학력" label="ACADEMIC BACKGROUND" entries={academicHistory} />
-          <BackgroundGroup title="시험 이력" label="EXAMINATIONS" entries={examinations} />
           <BackgroundGroup title="기술과 활용 경험" label="SKILLS" entries={skills} className="skills-grid" />
-          <BackgroundGroup title="일하는 방식" label="HOW I WORK" entries={workingStyle} />
         </section>
 
         <section className="project-section section" id="projects">
