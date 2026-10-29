@@ -15,6 +15,9 @@ export const safestay = {
   technologies: ["MariaDB", "PMM", "MaxScale", "Shell Script", "Ubuntu"],
   repository,
   website: null,
+  videos: [
+    { id: "s6fb6bkrD3I", title: "SafeStay 시연영상", description: "SafeStay 프로젝트 시연", url: "https://youtu.be/s6fb6bkrD3I", poster: image("cover.png") },
+  ],
   slides: [
     {
       layout: "case-study", dense: true,
@@ -28,7 +31,6 @@ export const safestay = {
       ],
       figures: [
         { image: image("cover.png"), title: "SafeStay · 프로젝트 표지", text: "호텔 서비스와 DB 보안 인프라를 표현한 대표 이미지" },
-        { image: image("web-demo.png"), title: "호텔 예약 웹서비스", text: "팀원이 구현한 서비스 화면 · 결과보고서" },
         { image: image("p2-2.jpg"), title: "보안·모니터링 구성", text: "팀 전체 설계 · 계층별 검사와 상태 관찰" },
         { image: image("p2-3.jpg"), title: "네트워크 토폴로지", text: "팀 전체 구성 · 웹·DB·관리 구간 분리" },
       ],
@@ -71,6 +73,7 @@ export const safestay = {
     {
       layout: "case-study", dense: true,
       title: "공격 검증 결과와 회고 · 계층별 근거를 확인",
+      includeVideos: true,
       sourceLabel: "자료·작업 기록",
       sections: [
         { title: "나의 기여 · 팀 검증과 연결", text: "WAF 규칙 문서를 공동 정리하고 IPS 테스트 시나리오를 작성했습니다. 웹·방화벽·IPS 구축과 공격 시연은 각 담당 팀원의 작업입니다." },
