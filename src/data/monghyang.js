@@ -178,12 +178,11 @@ export const monghyang = {
     {
       "layout": "case-study",
       "dense": true,
-      "includeVideos": true,
       "title": "결과와 회고 · 시연으로 확인하는 구현",
       "sections": [
         {
           "title": "구현 결과",
-          "text": "상품구매와 체험예약, 두 가지 주요 사용자 흐름의 프론트엔드 화면과 API 연동을 구성했습니다. 오른쪽 시연영상 2개에서 테스트 환경의 동작을 확인할 수 있습니다."
+          "text": "상품구매와 체험예약, 두 가지 주요 사용자 흐름의 프론트엔드 화면과 API 연동을 구성했습니다. 다음 페이지의 시연영상 2개에서 테스트 환경의 동작을 확인할 수 있습니다."
         },
         {
           "title": "팀 성과",
@@ -210,6 +209,7 @@ export const monghyang = {
           "text": "2025.12.12 · 아이디어 상"
         }
       ]
-    }
+    },
+    { layout: "videos", title: "시연영상 · 체험예약과 상품구매" },
   ],
 };

@@ -73,7 +73,6 @@ export const safestay = {
     {
       layout: "case-study", dense: true,
       title: "공격 검증 결과와 회고 · 계층별 근거를 확인",
-      includeVideos: true,
       sourceLabel: "자료·작업 기록",
       sections: [
         { title: "나의 기여 · 팀 검증과 연결", text: "WAF 규칙 문서를 공동 정리하고 IPS 테스트 시나리오를 작성했습니다. 웹·방화벽·IPS 구축과 공격 시연은 각 담당 팀원의 작업입니다." },
@@ -88,5 +87,6 @@ export const safestay = {
       ],
       sources: [{ title: "공격 검증·회고", url: `${repository}#팀-공격-시나리오와-확인-결과` }],
     },
+    { layout: "videos", title: "SafeStay · 시연영상" },
   ],
 };
