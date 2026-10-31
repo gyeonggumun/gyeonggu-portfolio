@@ -2,6 +2,7 @@ import { monghyang } from "./monghyang";
 import { safestay } from "./safestay";
 import { moaSurvey } from "./moaSurvey";
 import { reflection } from "./reflection";
+import { processingStudy } from "./processingStudy";
 
 // 실제 내용은 이 파일에서 교체합니다. 빈 값은 화면에서 준비 중 상태로 표시됩니다.
 export const profile = {
@@ -139,11 +140,7 @@ export const projects = [
   ]),
   moaSurvey,
   reflection,
-  makeProject("personal-03", "personal", true, "03", [
-    ["overview", "프로젝트 개요"],
-    ["gallery", "주요 화면"],
-    ["results", "배운 점과 다음 단계"],
-  ]),
+  processingStudy,
   makeProject("team-04", "team", false, "04", [
     ["overview", "프로젝트 개요"],
     ["split", "주요 작업"],
