@@ -38,7 +38,7 @@ export const awards = [
     organization: "교육부 장관 인증",
     date: "2025.10.17",
     description: "몽향의 숲 팀으로 성장트랙에 최종 선정되었습니다.",
-    image: "/images/recognition-u300-2025.jpg",
+    image: "/images/recognition-u300-2025.png",
   },
 ];
 
@@ -74,8 +74,7 @@ export const education = [
     organization: "(재)부산정보산업진흥원",
     period: "2024.07.02 ~ 2024.08.23 · 160시간 수료",
     description: "신기술 동향 분석을 위한 데이터 분석 기반 인공지능 모델 설계·구축 과정을 수료했습니다.",
-    image: null,
-    pendingLabel: "수료증 추가 예정",
+    image: "/images/completion-ict-ai-2024.png",
   },
 ];
 
