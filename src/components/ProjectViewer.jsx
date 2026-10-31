@@ -353,7 +353,7 @@ export default function ProjectViewer({ project, onClose }) {
             </button>
           ))}
         </nav>
-        {(project.repository || project.website || project.videos?.length) && (
+        {(project.repository || project.website || project.research || project.videos?.length) && (
           <div className="viewer-links">
             {project.repository && (
               <a href={project.repository} target="_blank" rel="noreferrer">
@@ -363,6 +363,11 @@ export default function ProjectViewer({ project, onClose }) {
             {project.website && (
               <a href={project.website} target="_blank" rel="noreferrer">
                 웹사이트 <Icon name="diagonal" size={14} />
+              </a>
+            )}
+            {project.research && (
+              <a href={project.research.url} target="_blank" rel="noreferrer">
+                {project.research.title} <Icon name="diagonal" size={14} />
               </a>
             )}
             {project.videos?.map((video) => (
