@@ -535,7 +535,8 @@ details[open] > summary .archive-toggle svg {
 }
 .project-card {
   appearance: none;
-  display: block;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   text-align: left;
   padding: 0;
@@ -632,6 +633,11 @@ details[open] > summary .archive-toggle svg {
 .card-copy > p {
   font-size: 13px;
   line-height: 1.8;
+  height: 5.4em;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
   color: #707b64;
   word-break: keep-all;
   margin-top: 8px;
