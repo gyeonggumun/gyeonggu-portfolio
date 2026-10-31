@@ -1,6 +1,7 @@
 import { monghyang } from "./monghyang";
 import { safestay } from "./safestay";
 import { cleanticket } from "./cleanticket";
+import { grayguard } from "./grayguard";
 import { moaSurvey } from "./moaSurvey";
 import { reflection } from "./reflection";
 import { processingStudy } from "./processingStudy";
@@ -135,10 +136,7 @@ export const projects = [
   moaSurvey,
   reflection,
   processingStudy,
-  makeProject("team-04", "team", false, "04", [
-    ["overview", "프로젝트 개요"],
-    ["split", "주요 작업"],
-  ]),
+  grayguard,
   makeProject("team-05", "team", false, "05", [
     ["overview", "프로젝트 개요"],
     ["gallery", "주요 화면"],
