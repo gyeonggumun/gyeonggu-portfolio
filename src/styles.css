@@ -978,6 +978,23 @@ details[open] > summary .when-closed {
 .is-dense .case-study-figures > figure:first-child:nth-last-child(3) {
   grid-row: span 2;
 }
+.has-three-figures figure {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.has-three-figures .slide-image-link {
+  height: auto;
+}
+.has-three-figures .slide-image {
+  height: auto;
+  max-height: 14cqw;
+  border: 0;
+  background: transparent;
+}
+.has-three-figures > figure:first-child .slide-image {
+  max-height: 29cqw;
+}
 .is-dense .case-study-figures figcaption {
   font-size: 0.82cqw;
   line-height: 1.5;
@@ -1007,6 +1024,37 @@ details[open] > summary .when-closed {
   gap: 2cqw;
   height: 100%;
   word-break: keep-all;
+}
+.slide-videos.is-single {
+  grid-template-columns: minmax(0, 1fr);
+}
+.slide-videos.is-single .demo-video {
+  width: 62cqw;
+  max-width: 100%;
+  justify-self: center;
+}
+.layout-videos > h3 {
+  margin: 1.4cqw 0 1.2cqw;
+  font-size: 2.3cqw;
+}
+.layout-videos .slide-footer {
+  margin-top: 1.1cqw;
+}
+.demo-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1cqw;
+  margin-top: 0.8cqw;
+}
+.demo-caption h4 {
+  margin: 0;
+  font-size: 1.25cqw;
+}
+.demo-caption a {
+  font-size: 0.95cqw;
+  color: var(--accent);
+  text-decoration: underline;
 }
 .demo-player {
   aspect-ratio: 16 / 9;

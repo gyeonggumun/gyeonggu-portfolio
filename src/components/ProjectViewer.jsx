@@ -34,7 +34,7 @@ function SlideImage({ src, label = "이미지를 추가할 자리", enlarge = fa
   );
 }
 
-function DemoVideo({ video, poster, compact = false }) {
+function DemoVideo({ video, poster, compact = false, theater = false }) {
   const [playing, setPlaying] = useState(false);
   return (
     <div className={`demo-video${compact ? " is-compact" : ""}`}>
@@ -55,9 +55,18 @@ function DemoVideo({ video, poster, compact = false }) {
           </button>
         )}
       </div>
-      <h4>{video.title}</h4>
-      {!compact && <p>{video.description}</p>}
-      <a href={video.url} target="_blank" rel="noreferrer">YouTube에서 보기 ↗</a>
+      {theater ? (
+        <div className="demo-caption">
+          <h4>{video.title}</h4>
+          <a href={video.url} target="_blank" rel="noreferrer">YouTube에서 보기 ↗</a>
+        </div>
+      ) : (
+        <>
+          <h4>{video.title}</h4>
+          {!compact && <p>{video.description}</p>}
+          <a href={video.url} target="_blank" rel="noreferrer">YouTube에서 보기 ↗</a>
+        </>
+      )}
     </div>
   );
 }
@@ -80,7 +89,7 @@ function SlideContent({ project, slide }) {
               </div>
             )}
           </div>
-          <div className="case-study-figures">
+          <div className={`case-study-figures${slide.figures.length === 3 && !slide.includeVideos ? " has-three-figures" : ""}`}>
             {slide.figures.map((figure) => (
               <figure key={figure.image}>
                 <SlideImage src={figure.image} label={figure.title} enlarge />
@@ -95,11 +104,10 @@ function SlideContent({ project, slide }) {
       );
     case "videos":
       return (
-        <div className="slide-videos">
+        <div className={`slide-videos${project.videos.length === 1 ? " is-single" : ""}`}>
           {project.videos.map((video) => (
-            <DemoVideo key={video.id} video={video} poster={video.poster} />
+            <DemoVideo key={video.id} video={video} poster={video.poster} theater />
           ))}
-          <p className="video-note">테스트 환경 시연 · 플레이어가 열리지 않으면 YouTube 링크로 확인할 수 있습니다.</p>
         </div>
       );
     case "overview":
