@@ -1,5 +1,6 @@
 import { monghyang } from "./monghyang";
 import { safestay } from "./safestay";
+import { cleanticket } from "./cleanticket";
 import { moaSurvey } from "./moaSurvey";
 import { reflection } from "./reflection";
 import { processingStudy } from "./processingStudy";
@@ -130,13 +131,7 @@ const makeProject = (id, category, featured, number, layouts) => ({
 export const projects = [
   monghyang,
   safestay,
-  makeProject("team-03", "team", true, "03", [
-    ["overview", "프로젝트 개요"],
-    ["split", "설계와 구조"],
-    ["gallery", "주요 화면"],
-    ["process", "구현 과정"],
-    ["results", "결과와 회고"],
-  ]),
+  cleanticket,
   moaSurvey,
   reflection,
   processingStudy,

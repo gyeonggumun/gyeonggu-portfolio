@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="360" viewBox="0 0 900 360">
+  <rect width="900" height="360" fill="#f5f6f1"/>
+  <g font-family="Arial, sans-serif" text-anchor="middle">
+    <text x="450" y="56" fill="#294534" font-size="24" font-weight="600">Snort → rsyslog → Graylog</text>
+    <g fill="#fff" stroke="#c5d0c0" stroke-width="2">
+      <rect x="45" y="115" width="220" height="130" rx="10"/>
+      <rect x="340" y="115" width="220" height="130" rx="10"/>
+      <rect x="635" y="115" width="220" height="130" rx="10"/>
+    </g>
+    <g fill="#294534" font-size="24" font-weight="600">
+      <text x="155" y="160">Snort IDS/IPS</text><text x="450" y="160">rsyslog</text><text x="745" y="160">Graylog</text>
+    </g>
+    <g fill="#66725f" font-size="17">
+      <text x="155" y="198">alert_syslog</text><text x="155" y="224">SID / timestamp / IP</text>
+      <text x="450" y="198">programname: snort</text><text x="450" y="224">UDP @ / TCP @@</text>
+      <text x="745" y="198">Input → Search</text><text x="745" y="224">Events / Timeline</text>
+      <text x="450" y="308">Configuration check: snort -T → restart services → verify collected events</text>
+    </g>
+    <g stroke="#6f8565" stroke-width="3" fill="#6f8565">
+      <path d="M278 180h47m-10-7 10 7-10 7" fill="none"/>
+      <path d="M573 180h47m-10-7 10 7-10 7" fill="none"/>
+    </g>
+  </g>
+</svg>
