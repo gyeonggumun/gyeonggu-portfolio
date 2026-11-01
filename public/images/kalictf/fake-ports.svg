@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480">
+<rect width="900" height="480" fill="#f5f6f1"/>
+<g font-family="Arial, sans-serif">
+<text x="450" y="54" text-anchor="middle" font-size="28" font-weight="600" fill="#294534">위장 포트와 서비스 식별</text>
+<rect x="38" y="85" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="116" font-size="22" font-weight="600" fill="#294534">위장 리스너 3개</text>
+<text x="60" y="147" font-size="20" fill="#3e4d3a">TCP 21 / 3306 / 8080</text>
+<text x="60" y="174" font-size="18" fill="#66725f">systemd에서 ncat 리스너를 함께 실행</text>
+<rect x="38" y="206" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="237" font-size="22" font-weight="600" fill="#294534">학습 의도</text>
+<text x="60" y="268" font-size="20" fill="#3e4d3a">포트 번호와 실제 프로세스는 다른 근거</text>
+<text x="60" y="295" font-size="18" fill="#66725f">FTP·DB·HTTP 서비스를 구현했다는 뜻은 아님</text>
+<rect x="38" y="327" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="358" font-size="22" font-weight="600" fill="#294534">분석 관점</text>
+<text x="60" y="389" font-size="20" fill="#3e4d3a">열린 포트 → 응답·프로세스·설정과 대조</text>
+<text x="60" y="416" font-size="18" fill="#66725f">하나의 스캔 결과로 서비스를 단정하지 않기</text>
+</g></svg>

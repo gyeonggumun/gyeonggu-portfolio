@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480">
+<rect width="900" height="480" fill="#f5f6f1"/>
+<g font-family="Arial, sans-serif">
+<text x="450" y="54" text-anchor="middle" font-size="28" font-weight="600" fill="#294534">구현 근거와 검증 범위</text>
+<rect x="38" y="85" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="116" font-size="22" font-weight="600" fill="#294534">기존 실습 결과</text>
+<text x="60" y="147" font-size="20" fill="#3e4d3a">워크스루에 User / Root 목표 달성 기록</text>
+<text x="60" y="174" font-size="18" fill="#66725f">제작 환경에서 진행한 공동 실습 자료</text>
+<rect x="38" y="206" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="237" font-size="22" font-weight="600" fill="#294534">현재 확인한 근거</text>
+<text x="60" y="268" font-size="20" fill="#3e4d3a">웹 소스·systemd·규칙·바이너리 분석 기록</text>
+<text x="60" y="295" font-size="18" fill="#66725f">VM 부팅·공격·권한 상승 재실행은 하지 않음</text>
+<rect x="38" y="327" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="358" font-size="22" font-weight="600" fill="#294534">다음 검증</text>
+<text x="60" y="389" font-size="20" fill="#3e4d3a">자동 구축·초기화 / 전체 경로 반복 재현</text>
+<text x="60" y="416" font-size="18" fill="#66725f">수정 전후 입력 처리·권한 경계 비교 시험</text>
+</g></svg>

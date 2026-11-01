@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480">
+<rect width="900" height="480" fill="#f5f6f1"/>
+<g font-family="Arial, sans-serif">
+<text x="450" y="54" text-anchor="middle" font-size="28" font-weight="600" fill="#294534">입력값과 템플릿 소스의 경계</text>
+<rect x="38" y="85" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="116" font-size="22" font-weight="600" fill="#294534">입력 수신</text>
+<text x="60" y="147" font-size="20" fill="#3e4d3a">name = request.args.get('name')</text>
+<text x="60" y="174" font-size="18" fill="#66725f">사용자가 제공한 값을 수신</text>
+<rect x="38" y="206" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="237" font-size="22" font-weight="600" fill="#294534">코드와 데이터 결합</text>
+<text x="60" y="268" font-size="20" fill="#3e4d3a">content = f-string / base_html.replace(...)</text>
+<text x="60" y="295" font-size="18" fill="#66725f">입력이 완성된 HTML 문자열에 먼저 삽입</text>
+<rect x="38" y="327" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="358" font-size="22" font-weight="600" fill="#294534">서버 측 렌더링</text>
+<text x="60" y="389" font-size="20" fill="#3e4d3a">render_template_string(final_html)</text>
+<text x="60" y="416" font-size="18" fill="#66725f">고정 템플릿에 값을 데이터로 전달하도록 개선</text>
+</g></svg>

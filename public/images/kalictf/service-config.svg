@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480">
+<rect width="900" height="480" fill="#f5f6f1"/>
+<g font-family="Arial, sans-serif">
+<text x="450" y="54" text-anchor="middle" font-size="28" font-weight="600" fill="#294534">웹 서비스와 파일 접근 경계</text>
+<rect x="38" y="85" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="116" font-size="22" font-weight="600" fill="#294534">systemd 웹 서비스</text>
+<text x="60" y="147" font-size="20" fill="#3e4d3a">User=www-data / Restart=always</text>
+<text x="60" y="174" font-size="18" fill="#66725f">/var/www/internal_api/wsgi.py 실행</text>
+<rect x="38" y="206" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="237" font-size="22" font-weight="600" fill="#294534">설정 파일 경계</text>
+<text x="60" y="268" font-size="20" fill="#3e4d3a">웹 프로세스가 읽는 설정에 로그인 정보 포함</text>
+<text x="60" y="295" font-size="18" fill="#66725f">노출 값은 공개하지 않고 키 형식만 문서화</text>
+<rect x="38" y="327" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="358" font-size="22" font-weight="600" fill="#294534">후속 개선</text>
+<text x="60" y="389" font-size="20" fill="#3e4d3a">서비스·로그인 비밀정보 분리 / 최소 읽기 권한</text>
+<text x="60" y="416" font-size="18" fill="#66725f">취약 구현과 수정 구현의 결과를 비교</text>
+</g></svg>

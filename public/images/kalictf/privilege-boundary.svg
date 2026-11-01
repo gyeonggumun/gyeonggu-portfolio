@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480">
+<rect width="900" height="480" fill="#f5f6f1"/>
+<g font-family="Arial, sans-serif">
+<text x="450" y="54" text-anchor="middle" font-size="28" font-weight="600" fill="#294534">SUID 파일과 명령 탐색 환경</text>
+<rect x="38" y="85" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="116" font-size="22" font-weight="600" fill="#294534">파일 메타데이터</text>
+<text x="60" y="147" font-size="20" fill="#3e4d3a">netcheck: UID 0 / GID 0 / mode 4755</text>
+<text x="60" y="174" font-size="18" fill="#66725f">저장소의 기존 inode 분석 기록</text>
+<rect x="38" y="206" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="237" font-size="22" font-weight="600" fill="#294534">바이너리 단서</text>
+<text x="60" y="268" font-size="20" fill="#3e4d3a">system · setuid · setgid · 경로 없는 curl 문자열</text>
+<text x="60" y="295" font-size="18" fill="#66725f">문자열만으로 모든 제어 흐름을 확정하지 않음</text>
+<rect x="38" y="327" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="358" font-size="22" font-weight="600" fill="#294534">권한 경계 검토</text>
+<text x="60" y="389" font-size="20" fill="#3e4d3a">특권 실행에서 사용자 제어 PATH를 신뢰</text>
+<text x="60" y="416" font-size="18" fill="#66725f">불필요한 SUID 제거 / 절대 경로 / 최소 권한</text>
+</g></svg>

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480">
+<rect width="900" height="480" fill="#f5f6f1"/>
+<g font-family="Arial, sans-serif">
+<text x="450" y="54" text-anchor="middle" font-size="28" font-weight="600" fill="#294534">웹에서 Linux 권한 경계까지</text>
+<rect x="38" y="85" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="116" font-size="22" font-weight="600" fill="#294534">웹 진입과 입력 처리</text>
+<text x="60" y="147" font-size="20" fill="#3e4d3a">기업 포털 → 내부 매뉴얼 → name 파라미터</text>
+<text x="60" y="174" font-size="18" fill="#66725f">Flask / Jinja2 템플릿 평가를 관찰</text>
+<rect x="38" y="206" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="237" font-size="22" font-weight="600" fill="#294534">사용자 계정 단계</text>
+<text x="60" y="268" font-size="20" fill="#3e4d3a">설정 파일 노출 → 실습용 SSH 계정 접근</text>
+<text x="60" y="295" font-size="18" fill="#66725f">서비스 파일 읽기 권한과 비밀정보 경계</text>
+<rect x="38" y="327" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="358" font-size="22" font-weight="600" fill="#294534">관리자 권한 단계</text>
+<text x="60" y="389" font-size="20" fill="#3e4d3a">root 소유 SUID netcheck → PATH 의존 명령</text>
+<text x="60" y="416" font-size="18" fill="#66725f">일반 사용자 환경을 신뢰할 때의 영향 학습</text>
+</g></svg>

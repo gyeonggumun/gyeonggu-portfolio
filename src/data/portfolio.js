@@ -5,6 +5,7 @@ import { grayguard } from "./grayguard";
 import { dramacalendar } from "./dramacalendar";
 import { tutoroo } from "./tutoroo";
 import { websecLab } from "./websecLab";
+import { kaliCTF } from "./kaliCTF";
 import { moaSurvey } from "./moaSurvey";
 import { reflection } from "./reflection";
 import { processingStudy } from "./processingStudy";
@@ -143,10 +144,7 @@ export const projects = [
   dramacalendar,
   tutoroo,
   websecLab,
-  makeProject("personal-04", "personal", false, "04", [
-    ["overview", "프로젝트 개요"],
-    ["split", "주요 작업"],
-  ]),
+  kaliCTF,
   makeProject("personal-05", "personal", false, "05", [
     ["overview", "프로젝트 개요"],
     ["gallery", "주요 화면"],

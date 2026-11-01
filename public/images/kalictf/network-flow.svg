@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480">
+<rect width="900" height="480" fill="#f5f6f1"/>
+<g font-family="Arial, sans-serif">
+<text x="450" y="54" text-anchor="middle" font-size="28" font-weight="600" fill="#294534">HTTP 진입점과 내부 웹 포트</text>
+<rect x="38" y="85" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="116" font-size="22" font-weight="600" fill="#294534">외부 HTTP 80</text>
+<text x="60" y="147" font-size="20" fill="#3e4d3a">nat PREROUTING · REDIRECT → TCP 5000</text>
+<text x="60" y="174" font-size="18" fill="#66725f">Flask 코드의 수신 설정: 0.0.0.0:5000</text>
+<rect x="38" y="206" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="237" font-size="22" font-weight="600" fill="#294534">5000 직접 진입</text>
+<text x="60" y="268" font-size="20" fill="#3e4d3a">raw PREROUTING · 원래 목적지 5000 DROP</text>
+<text x="60" y="295" font-size="18" fill="#66725f">저장된 규칙 확인 · 현재 패킷 시험과 구분</text>
+<rect x="38" y="327" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="358" font-size="22" font-weight="600" fill="#294534">운영 설정</text>
+<text x="60" y="389" font-size="20" fill="#3e4d3a">www-data 실행 / systemd Restart=always</text>
+<text x="60" y="416" font-size="18" fill="#66725f">가상머신 기반 학습 서비스 구성</text>
+</g></svg>
