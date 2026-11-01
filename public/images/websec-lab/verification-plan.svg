@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480">
+<rect width="900" height="480" fill="#f5f6f1"/>
+<g font-family="Arial, sans-serif">
+<text x="450" y="54" text-anchor="middle" font-size="28" font-weight="600" fill="#294534">문제 풀이와 운영 경계를 함께 검증</text>
+<rect x="38" y="85" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="116" font-size="22" font-weight="600" fill="#294534">기존 기록</text>
+<text x="60" y="147" font-size="20" fill="#3e4d3a">워크스루에 문제 1·2의 목표 달성 기록</text>
+<text x="60" y="174" font-size="18" fill="#66725f">현재 작업에서 공격을 재실행한 결과는 아님</text>
+<rect x="38" y="206" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="237" font-size="22" font-weight="600" fill="#294534">설정 근거</text>
+<text x="60" y="268" font-size="20" fill="#3e4d3a">참조 코드·systemd·Apache·UFW와 대조</text>
+<text x="60" y="295" font-size="18" fill="#66725f">설정 존재와 실행 중 통제 효과를 구분</text>
+<rect x="38" y="327" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="358" font-size="22" font-weight="600" fill="#294534">다음 검증</text>
+<text x="60" y="389" font-size="20" fill="#3e4d3a">담당 문제 풀이 성공 + 타 문제 접근 실패</text>
+<text x="60" y="416" font-size="18" fill="#66725f">파일·완료 기록·관리 경로의 회귀 시험 계획</text>
+</g></svg>

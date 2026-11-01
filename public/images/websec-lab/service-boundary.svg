@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480">
+<rect width="900" height="480" fill="#f5f6f1"/>
+<g font-family="Arial, sans-serif">
+<text x="450" y="54" text-anchor="middle" font-size="28" font-weight="600" fill="#294534">서비스 실행 경계</text>
+<rect x="38" y="85" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="116" font-size="22" font-weight="600" fill="#294534">문제 1·2 서비스</text>
+<text x="60" y="147" font-size="20" fill="#3e4d3a">실행 계정: wargame · localhost:8080</text>
+<text x="60" y="174" font-size="18" fill="#66725f">두 문제는 같은 계정·프로세스를 사용</text>
+<rect x="38" y="206" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="237" font-size="22" font-weight="600" fill="#294534">별도 Flask 서비스</text>
+<text x="60" y="268" font-size="20" fill="#3e4d3a">실행 계정: hiddenarchive · localhost:8081</text>
+<text x="60" y="295" font-size="18" fill="#66725f">Apache에서 경로별 프록시로 분기</text>
+<rect x="38" y="327" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="358" font-size="22" font-weight="600" fill="#294534">공통 실행 제한</text>
+<text x="60" y="389" font-size="20" fill="#3e4d3a">NoNewPrivileges=true · PrivateTmp=true</text>
+<text x="60" y="416" font-size="18" fill="#66725f">권한 상승·임시 공간 제한과 파일 격리는 별개</text>
+</g></svg>

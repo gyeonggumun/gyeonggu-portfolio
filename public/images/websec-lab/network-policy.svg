@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480">
+<rect width="900" height="480" fill="#f5f6f1"/>
+<g font-family="Arial, sans-serif">
+<text x="450" y="54" text-anchor="middle" font-size="28" font-weight="600" fill="#294534">외부 진입점과 방화벽</text>
+<rect x="38" y="85" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="116" font-size="22" font-weight="600" fill="#294534">Apache 진입점</text>
+<text x="60" y="147" font-size="20" fill="#3e4d3a">HTTP 80 → 경로별 Flask 프록시</text>
+<text x="60" y="174" font-size="18" fill="#66725f">내부 앱 포트는 localhost 수신</text>
+<rect x="38" y="206" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="237" font-size="22" font-weight="600" fill="#294534">UFW 저장 규칙</text>
+<text x="60" y="268" font-size="20" fill="#3e4d3a">수신·전달 기본 DROP / 출력 ACCEPT</text>
+<text x="60" y="295" font-size="18" fill="#66725f">IPv4·IPv6에 HTTP 80, SSH 22 허용</text>
+<rect x="38" y="327" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="358" font-size="22" font-weight="600" fill="#294534">남은 개선</text>
+<text x="60" y="389" font-size="20" fill="#3e4d3a">SSH 22는 모든 출발지에 허용</text>
+<text x="60" y="416" font-size="18" fill="#66725f">관리망·인증 정책과 실제 접속 시험 필요</text>
+</g></svg>

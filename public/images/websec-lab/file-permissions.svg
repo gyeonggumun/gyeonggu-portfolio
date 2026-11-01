@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="480" viewBox="0 0 900 480">
+<rect width="900" height="480" fill="#f5f6f1"/>
+<g font-family="Arial, sans-serif">
+<text x="450" y="54" text-anchor="middle" font-size="28" font-weight="600" fill="#294534">계정·파일 권한의 적용 범위</text>
+<rect x="38" y="85" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="116" font-size="22" font-weight="600" fill="#294534">담당 앱 경로</text>
+<text x="60" y="147" font-size="20" fill="#3e4d3a">디렉터리 0700 / 소스 0600</text>
+<text x="60" y="174" font-size="18" fill="#66725f">wargame 계정 중심으로 접근 범위 제한</text>
+<rect x="38" y="206" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="237" font-size="22" font-weight="600" fill="#294534">서비스 계정</text>
+<text x="60" y="268" font-size="20" fill="#3e4d3a">nologin · 서비스별 실행 계정 분리</text>
+<text x="60" y="295" font-size="18" fill="#66725f">대화형 로그인 제한과 서비스 침해는 별개</text>
+<rect x="38" y="327" width="824" height="104" rx="8" fill="#fff" stroke="#c5d0c0"/>
+<text x="60" y="358" font-size="22" font-weight="600" fill="#294534">남은 개선</text>
+<text x="60" y="389" font-size="20" fill="#3e4d3a">목표 파일 0777 / 문제 1·2 계정 공유</text>
+<text x="60" y="416" font-size="18" fill="#66725f">최소 권한과 문제별 자격 증명 재정비</text>
+</g></svg>
