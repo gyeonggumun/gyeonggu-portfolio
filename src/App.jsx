@@ -116,10 +116,10 @@ export default function App() {
             PORTFOLIO<span>.</span>
           </a>
           <nav aria-label="주 메뉴">
-            <a href="#about">About</a>
-            <a href="#journey">Experience</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
+            <a href="#about">소개</a>
+            <a href="#journey">경험</a>
+            <a href="#projects">프로젝트</a>
+            <a href="#contact">연락처</a>
           </nav>
         </div>
       </header>
