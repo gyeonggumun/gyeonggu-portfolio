@@ -27,7 +27,6 @@ export const websecLab = {
         { title: "팀 결과와 개인 범위", text: "팀은 문제 9개와 플래그 목표 10개를 단일 OVA로 통합했습니다. 제 문제 제작 범위는 1·2번이고, 나머지 문제는 팀 결과입니다. 워크스루에는 담당 두 문제의 목표 달성 기록이 남아 있습니다." },
       ],
       figures: [
-        { image: image("cover.png"), title: "웹 보안 워게임 · 대표 이미지", text: "통제된 실습 환경을 표현한 생성 이미지" },
         { image: image("architecture.png"), title: "통합 실습 환경의 구조", text: "저장소 도식 · Apache·Flask·DB·진행도 경로" },
         { image: image("challenge-flows.png"), title: "직접 제작한 두 문제의 흐름", text: "저장소 도식 · SQL 해석과 셸 해석·관측 지점" },
       ],
@@ -40,13 +39,12 @@ export const websecLab = {
       sections: [
         { title: "문제 설계와 나의 구현", text: "JSON 로그인 API에서 username·password를 SQL 문자열에 결합하도록 구성했습니다. 조회한 행은 직접 보여주지 않고 success·fail·error를 구분해 조건에 따른 결과를 관찰하도록 만들었습니다." },
         { title: "학습 흐름 · 요청에서 조건 추론까지", text: "로그인 요청 구조를 확인하고 입력에 따른 응답 변화를 비교한 뒤, 참·거짓 결과로 데이터를 추론하도록 설계했습니다. 단순 로그인 우회에서 끝나지 않고 데이터가 직접 보이지 않는 상황을 다루게 했습니다." },
-        { title: "검증 근거와 해석", text: "워크스루 1~3쪽에 요청 캡처·오류 응답·로그인 성공과 목표 달성 과정이 있습니다. HTTP 500만으로 원인을 단정하지 않고, 실제 SQL 생성 코드와 Boolean 응답을 함께 대조했습니다." },
+        { title: "검증 근거와 해석", text: "워크스루의 요청·오류·로그인 결과와 SQL 생성 코드를 대조했습니다. HTTP 500만으로 원인을 단정하지 않고 조건별 응답으로 입력 해석을 확인했습니다." },
         { title: "보안 관점과 배운 점", text: "취약점의 핵심은 입력을 SQL 코드와 분리하지 않은 데 있습니다. 실제 서비스에서는 매개변수화 쿼리와 비밀번호 해시 검증을 적용하고, 오류 응답과 계정 권한도 함께 검토해야 합니다." },
       ],
       figures: [
-        { image: image("ch1-json-request.jpg"), title: "로그인 API 요청 분석", text: "워크스루 1쪽 · JSON 요청 구조 확인" },
-        { image: image("ch1-error-response.jpg"), title: "입력 변화에 따른 오류 응답", text: "워크스루 2쪽 · 코드·다른 응답과 함께 해석" },
-        { image: image("ch1-login.jpg"), title: "조건 변화와 로그인 성공", text: "워크스루 2쪽 · 조회 데이터는 직접 출력되지 않음" },
+        { image: image("ch1-json-request.jpg"), title: "로그인 API 요청 분석", text: "JSON 요청 구조 확인" },
+        { image: image("ch1-login.jpg"), title: "조건 변화와 로그인 성공", text: "조회 데이터는 직접 출력되지 않음" },
       ],
       sources: [{ title: "문제 1 기술 설명", url: doc("CHALLENGE-01.md") }, { title: "담당 앱 참조 코드", url: `${repository}/blob/main/reference/web/app.sanitized.py` }],
     },
@@ -57,13 +55,12 @@ export const websecLab = {
       sections: [
         { title: "문제 설계와 나의 구현", text: "웹훅 URL을 curl 명령 문자열에 결합하고 Bash의 shell=True 실행으로 전달하는 문제를 제작했습니다. 일반 화면에서 명령 출력을 직접 보여주지 않아, 실습망의 수신 기록으로 동작을 관찰하도록 했습니다." },
         { title: "접근 · 코드와 외부 요청을 연결", text: "워크스루는 웹훅 요청을 캡처하고 리스너에 도달한 HTTP 요청을 확인합니다. curl User-Agent만으로 명령 주입을 확정하지 않고, 입력 결합과 셸 실행 코드를 함께 확인했습니다." },
-        { title: "확인 결과와 운영 경계", text: "워크스루 4~6쪽에 수신 기록과 목표 달성 결과가 있습니다. 전용 계정·NoNewPrivileges·PrivateTmp를 적용했지만, 문제 1·2는 같은 계정과 프로세스를 사용해 파일 접근 경계에 제약이 남았습니다." },
+        { title: "확인 결과와 운영 경계", text: "워크스루에 수신 기록과 목표 달성 결과가 남아 있습니다. 전용 계정·systemd 제한을 적용했지만 문제 1·2는 계정을 공유해 파일 접근 경계에 제약이 남았습니다." },
         { title: "배운 점 · 기능과 권한을 따로 검토", text: "연결·실행 제한 시간을 두어도 셸 해석 자체가 사라지지는 않습니다. 실제 서비스에서는 셸 없는 HTTP 클라이언트를 사용하고, 목적지·리다이렉션·내부 주소 접근도 별도로 제한해야 합니다." },
       ],
       figures: [
-        { image: image("ch2-webhook-request.jpg"), title: "웹훅 API 요청 구조", text: "워크스루 4쪽 · 실습망 목적지로 요청 전달" },
-        { image: image("ch2-listener.jpg"), title: "서버 요청의 수신 기록", text: "워크스루 4쪽 · 서버 요청 관측, 플래그 값 없음" },
-        { image: image("service-boundary.svg"), title: "서비스 실행 계정과 제한", text: "참조 설정을 정리한 개념도 · 완전 격리와 구분" },
+        { image: image("ch2-webhook-request.jpg"), title: "웹훅 API 요청 구조", text: "실습망 목적지로 요청 전달" },
+        { image: image("ch2-listener.jpg"), title: "서버 요청의 수신 기록", text: "서버 요청 관측, 플래그 값 없음" },
       ],
       sources: [{ title: "문제 2 기술 설명", url: doc("CHALLENGE-02.md") }, { title: "실행 서비스 설정", url: `${repository}/blob/main/reference/systemd/wargame.service` }],
     },
@@ -73,14 +70,13 @@ export const websecLab = {
       sourceLabel: "자료·구현 근거",
       sections: [
         { title: "나의 보안 작업", text: "수신 진입점과 서비스 계정, sudo·파일 권한을 정리하고 문제 간 접근 범위를 조정했습니다. UFW 기본 수신·전달 차단, localhost 바인딩, 서비스 계정 로그인 제한과 systemd 실행 제한을 구성했습니다." },
-        { title: "적용 범위 · 설정별 역할 구분", text: "localhost는 외부 직접 접속을, nologin은 대화형 로그인을, NoNewPrivileges는 새 권한 획득을 제한합니다. 각각을 파일·네트워크 전체 격리로 해석하지 않고 실제 적용 범위를 확인했습니다." },
+        { title: "적용 범위 · 설정별 역할 구분", text: "외부 진입점, 서비스 로그인, 권한 상승을 각각 통제했습니다. 파일 읽기·쓰기와 서비스 간 접근은 별도 경계로 점검해야 했습니다." },
         { title: "결과와 남은 과제", text: "문제 1·2의 기존 풀이 기록과 참조 설정을 대조했습니다. 제출 상태에는 SSH 출발지 제한 부재, 목표 파일의 0777 권한, 문제 1·2 계정 공유가 남아 있어 최소 권한과 문제별 경계를 보완해야 했습니다." },
         { title: "다시 한다면 · 경계 실패도 검증", text: "문제별 계정·DB 자격 증명 또는 컨테이너 경계를 검토하겠습니다. 담당 문제 풀이 성공과 함께 타 문제 파일·완료 기록 접근 실패를 시험하고, 관리망·인증 정책도 반복 검증하겠습니다." },
       ],
       figures: [
         { image: image("network-policy.svg"), title: "방화벽과 외부 진입점", text: "Apache·UFW 참조 파일을 정리한 개념도" },
         { image: image("file-permissions.svg"), title: "파일·계정 경계의 적용 범위", text: "저장소 권한 분석 기록 · 남은 제약 포함" },
-        { image: image("verification-plan.svg"), title: "결과 해석과 다음 검증", text: "기존 기록·정적 근거·후속 회귀 시험을 구분" },
       ],
       sources: [{ title: "보안 설계와 개선 과제", url: doc("SECURITY-DESIGN.md") }, { title: "원본 분석·검증 범위", url: doc("VERIFICATION.md") }],
     },

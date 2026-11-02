@@ -35,18 +35,9 @@ export const monghyang = {
         {
           "title": "접근과 핵심 관점",
           "text": "탐색 → 상세 → 구매·예약 흐름을 연결하고, 화면을 이동해도 선택한 상품·수량·예약 정보가 일관되게 이어지도록 구성했습니다."
-        },
-        {
-          "title": "핵심 교훈",
-          "text": "사용자 화면과 데이터 흐름을 함께 살펴야 했습니다. API 요청 형식과 오류 응답을 백엔드와 맞추는 과정이 UI 구현만큼 중요했습니다."
         }
       ],
       "figures": [
-        {
-          "image": "/images/monghyang/cover.png",
-          "title": "몽향 · 프로젝트 대표 이미지",
-          "text": "전통주 쇼핑과 양조장 체험을 연결하는 서비스"
-        },
         {
           "image": "/images/monghyang/brewery-search.png",
           "title": "양조장 탐색",
@@ -56,11 +47,6 @@ export const monghyang = {
           "image": "/images/monghyang/brewery-detail.png",
           "title": "양조장 상세",
           "text": "소개에서 상품·체험 정보로 이동"
-        },
-        {
-          "image": "/images/monghyang/product-detail.png",
-          "title": "전통주 상품 상세",
-          "text": "상품 정보와 구매 옵션 확인"
         }
       ],
       "sources": [
