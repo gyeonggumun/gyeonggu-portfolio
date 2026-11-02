@@ -75,7 +75,7 @@ function SlideContent({ project, slide }) {
   switch (slide.layout) {
     case "case-study":
       return (
-        <div className={`slide-case-study${slide.dense ? " is-dense" : ""}`}>
+        <div className={`slide-case-study${slide.dense ? " is-dense" : ""}${!slide.figures.length && !slide.includeVideos ? " is-text-only" : ""}`}>
           <div className="case-study-copy">
             {slide.sections.map((section) => (
               <section key={section.title}>
@@ -89,17 +89,19 @@ function SlideContent({ project, slide }) {
               </div>
             )}
           </div>
-          <div className={`case-study-figures${slide.figures.length === 3 && !slide.includeVideos ? " has-three-figures" : ""}`}>
-            {slide.figures.map((figure) => (
-              <figure key={figure.image}>
-                <SlideImage src={figure.image} label={figure.title} enlarge />
-                <figcaption><strong>{figure.title}</strong><span>{figure.text}</span></figcaption>
-              </figure>
-            ))}
-            {slide.includeVideos && project.videos.map((video) => (
-              <DemoVideo key={video.id} video={video} poster={video.poster} compact />
-            ))}
-          </div>
+          {(slide.figures.length > 0 || slide.includeVideos) && (
+            <div className={`case-study-figures${!slide.includeVideos ? ` figure-count-${slide.figures.length}` : ""}`}>
+              {slide.figures.map((figure) => (
+                <figure key={figure.image}>
+                  <SlideImage src={figure.image} label={figure.title} enlarge />
+                  <figcaption><strong>{figure.title}</strong><span>{figure.text}</span></figcaption>
+                </figure>
+              ))}
+              {slide.includeVideos && project.videos.map((video) => (
+                <DemoVideo key={video.id} video={video} poster={video.poster} compact />
+              ))}
+            </div>
+          )}
         </div>
       );
     case "videos":
