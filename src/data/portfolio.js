@@ -109,30 +109,6 @@ export const skills = [
   { title: "AI 활용", description: "AI가 생성한 코드와 문서 초안을 검토하고 직접 테스트·검증" },
 ];
 
-const emptySlide = (layout, title) => ({
-  layout,
-  title,
-  text: "",
-  image: null,
-  items: [],
-});
-const makeProject = (id, category, featured, number, layouts) => ({
-  id,
-  category,
-  featured,
-  number,
-  title: "",
-  description: "",
-  image: null,
-  period: "",
-  role: "",
-  technologies: [],
-  repository: null,
-  website: null,
-  // 슬라이드를 추가·삭제하거나 layout을 바꾸면 프로젝트마다 다른 페이지 구성이 됩니다.
-  slides: layouts.map(([layout, title]) => emptySlide(layout, title)),
-});
-
 export const projects = [
   monghyang,
   safestay,
@@ -145,10 +121,6 @@ export const projects = [
   tutoroo,
   websecLab,
   kaliCTF,
-  makeProject("personal-05", "personal", false, "05", [
-    ["overview", "프로젝트 개요"],
-    ["gallery", "주요 화면"],
-  ]),
 ];
 
 export const projectName = (project) =>
