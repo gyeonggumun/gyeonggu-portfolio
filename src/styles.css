@@ -928,6 +928,84 @@ details[open] > summary .when-closed {
   text-decoration: underline;
   text-underline-offset: 0.2cqw;
 }
+.project-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1cqw;
+  margin: 0.3cqw 0;
+  padding-top: 1cqw;
+  border-top: 1px solid var(--line);
+}
+.project-metrics dt {
+  font-size: 0.85cqw;
+  color: var(--muted);
+}
+.project-metrics dd {
+  margin: 0.4cqw 0;
+  font-size: 1.65cqw;
+  font-weight: 500;
+  color: var(--accent);
+}
+.project-metrics small {
+  display: block;
+  font-size: 0.75cqw;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.technical-figure {
+  flex-shrink: 0;
+  width: 100%;
+  min-width: 0;
+  background: #f0f2ed;
+  border: 1px solid #dce1d6;
+  border-radius: 0.45cqw;
+  overflow: hidden;
+}
+.technical-source {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1cqw;
+  padding: 0.65cqw 0.85cqw;
+  border-bottom: 1px solid #dce1d6;
+  font-size: 0.74cqw;
+  color: var(--accent);
+}
+.technical-source > span:first-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.technical-source > span:last-child { flex-shrink: 0; }
+.technical-figure pre {
+  margin: 0;
+  padding: 0.8cqw 0.7cqw;
+  font-size: 0.86cqw;
+  line-height: 1.5;
+  tab-size: 2;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  color: #27392e;
+}
+.technical-figure code { font-family: Consolas, "Courier New", monospace; }
+.code-block, .code-gap { display: block; }
+.code-line { display: grid; grid-template-columns: 2.6cqw minmax(0, 1fr); }
+.code-line-number { color: #8a9484; user-select: none; }
+.code-gap { color: #8a9484; padding-left: 2.6cqw; }
+.technical-record { margin: 0; padding: 0.6cqw 1cqw; }
+.technical-record > div {
+  display: grid;
+  grid-template-columns: 1fr 1.7fr;
+  gap: 1cqw;
+  padding: 0.65cqw 0;
+  font-size: 0.98cqw;
+  line-height: 1.65;
+}
+.technical-record > div + div { border-top: 1px solid #dce1d6; }
+.technical-record dt { color: var(--muted); }
+.technical-record dd { margin: 0; }
 .case-study-figures {
   display: grid;
   grid-auto-rows: minmax(0, 1fr);
@@ -1003,6 +1081,14 @@ details[open] > summary .when-closed {
 .case-study-figures.figure-count-1 {
   grid-template-columns: 1fr;
 }
+.case-study-figures.has-technical {
+  grid-template-columns: minmax(0, 1fr);
+  grid-auto-rows: max-content;
+  align-content: center;
+}
+.case-study-figures.has-technical figure { min-height: max-content; }
+.case-study-figures.has-technical > figure:first-child:nth-last-child(3) { grid-row: auto; }
+.case-study-figures.has-technical .slide-image { max-height: 6.5cqw; }
 .figure-count-1 .slide-image,
 .figure-count-2 .slide-image {
   max-height: 30cqw;

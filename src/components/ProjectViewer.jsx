@@ -34,6 +34,36 @@ function SlideImage({ src, label = "이미지를 추가할 자리", enlarge = fa
   );
 }
 
+function TechnicalFigure({ figure }) {
+  const evidence = figure.snippet || figure.facts;
+  return (
+    <div className={`technical-figure${figure.facts ? " is-record" : ""}`}>
+      <a className="technical-source" href={evidence.url} target="_blank" rel="noreferrer">
+        <span>{evidence.file}</span><span>{figure.snippet ? "GitHub 코드 발췌" : "GitHub 구현 기록"} ↗</span>
+      </a>
+      {figure.snippet ? (
+        <pre aria-label={`${evidence.file} ${evidence.language} 코드 발췌`}><code>
+          {evidence.blocks.map((block, index) => (
+            <span className="code-block" key={block.start}>
+              {index > 0 && <span className="code-gap" aria-label="중간 코드 생략">···</span>}
+              {block.lines.map((line, offset) => (
+                <span className="code-line" key={block.start + offset}>
+                  <span className="code-line-number" aria-hidden="true">{block.start + offset}</span>
+                  <span>{line || " "}</span>
+                </span>
+              ))}
+            </span>
+          ))}
+        </code></pre>
+      ) : (
+        <dl className="technical-record">
+          {evidence.rows.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
+        </dl>
+      )}
+    </div>
+  );
+}
+
 function DemoVideo({ video, poster, compact = false, theater = false }) {
   const [playing, setPlaying] = useState(false);
   return (
@@ -83,6 +113,17 @@ function SlideContent({ project, slide }) {
                 <p>{section.text}</p>
               </section>
             ))}
+            {slide.metrics?.length > 0 && (
+              <dl className="project-metrics" aria-label="근거로 확인한 구현 수치">
+                {slide.metrics.map((metric) => (
+                  <div key={metric.label}>
+                    <dt>{metric.label}</dt>
+                    <dd><a href={metric.url} target="_blank" rel="noreferrer">{metric.value} ↗</a></dd>
+                    <small>{metric.note}</small>
+                  </div>
+                ))}
+              </dl>
+            )}
             {slide.sources?.length > 0 && (
               <div className="case-study-sources">
                 {slide.sourceLabel || "구현 코드"} · {slide.sources.map((item) => <a key={item.url} href={item.url} target="_blank" rel="noreferrer">{item.title} ↗</a>)}
@@ -90,10 +131,10 @@ function SlideContent({ project, slide }) {
             )}
           </div>
           {(slide.figures.length > 0 || slide.includeVideos) && (
-            <div className={`case-study-figures${!slide.includeVideos ? ` figure-count-${slide.figures.length}` : ""}`}>
+            <div className={`case-study-figures${!slide.includeVideos ? ` figure-count-${slide.figures.length}` : ""}${slide.figures.some((figure) => figure.snippet || figure.facts) ? " has-technical" : ""}`}>
               {slide.figures.map((figure) => (
-                <figure key={figure.image}>
-                  <SlideImage src={figure.image} label={figure.title} enlarge />
+                <figure key={figure.image || figure.title}>
+                  {figure.snippet || figure.facts ? <TechnicalFigure figure={figure} /> : <SlideImage src={figure.image} label={figure.title} enlarge />}
                   <figcaption><strong>{figure.title}</strong><span>{figure.text}</span></figcaption>
                 </figure>
               ))}
