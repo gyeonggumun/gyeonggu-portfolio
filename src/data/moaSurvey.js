@@ -1,3 +1,5 @@
+import { codeExcerpts } from "./codeExcerpts.js";
+
 const image = (name) => `/images/moa-survey/${name}`;
 const repository = "https://github.com/gyeonggumun/Survey_production";
 const source = (path) => `${repository}/blob/main/${path}`;
@@ -28,9 +30,17 @@ export const moaSurvey = {
         { title: "나의 역할 · 개인 프로젝트", text: "React 화면, 설문 편집과 공개 응답, Supabase 인증·DB·접근 정책, 결과 분석·CSV와 Vercel 배포까지 서비스 흐름을 구현했습니다." },
         { title: "접근과 의사결정", text: "제작자 관리와 공개 응답 경로를 분리했습니다. 작성·발행·응답·분석은 하나의 서비스로 연결하고 데이터 권한과 검증은 DB에서도 확인하도록 구성했습니다." },
       ],
+      metrics: [
+        { value: "1 RPC", label: "설문·질문 저장 단위", note: "하나의 트랜잭션", url: "https://github.com/gyeonggumun/Survey_production/blob/2ac6cc90b60aabdf31fe5039e316a51b1df56506/supabase/migrations/20261005121903_save_survey_atomically.sql#L33-L47" },
+        { value: "500행", label: "기본 조회 배치", note: "결과가 끝날 때까지 이어 읽기", url: "https://github.com/gyeonggumun/Survey_production/blob/2ac6cc90b60aabdf31fe5039e316a51b1df56506/src/surveys/resultPagination.js#L1-L14" },
+        { value: "40 ID", label: "응답별 답변 조회", note: "IN 조건 묶음 크기", url: "https://github.com/gyeonggumun/Survey_production/blob/2ac6cc90b60aabdf31fe5039e316a51b1df56506/src/surveys/resultPagination.js#L17-L27" },
+      ],
       figures: [
-        { image: image("dashboard.jpg"), title: "제작자 대시보드", text: "내 설문과 발행·응답 현황 확인" },
-        { image: image("public-survey.jpg"), title: "공개 응답 화면", text: "단일·복수 선택과 주관식 입력" },
+        {
+          "image": "/images/moa-survey/dashboard.jpg",
+          "title": "제작자 대시보드",
+          "text": "내 설문과 발행·응답 현황 확인"
+        }
       ],
       sources: [{ title: "README", url: source("README.md") }],
     },
@@ -41,11 +51,15 @@ export const moaSurvey = {
         { title: "문제와 구현 범위", text: "설문 제목만 저장되고 질문 저장은 실패하면 화면과 데이터가 어긋날 수 있습니다. 질문 유형·선택지·필수 여부·순서 편집을 저장·미리보기·발행과 연결했습니다." },
         { title: "의사결정 · 원자 저장", text: "save_survey RPC에서 설문 정보와 질문을 한 트랜잭션으로 저장합니다. 질문 검증·저장에 실패하면 설문 정보 변경도 함께 되돌립니다." },
         { title: "응답 이력 보호", text: "응답이 있는 설문의 질문 내용을 바꾸면 기존 답의 의미가 달라질 수 있습니다. 내용 변경을 제한하면서 질문 순서 변경은 허용하도록 DB 검증을 구성했습니다." },
-        { title: "배운 점", text: "저장 단위와 실패 시 되돌릴 범위를 설계하고, 질문과 발행 조건을 DB에서도 검증해야 화면과 실제 데이터가 일치했습니다." },
+        { title: "구현 결과 · 저장 단위 1개", text: "설문 메타데이터와 질문 변경을 save_survey RPC 1회로 전달합니다. 질문 저장 검증이 실패하면 같은 트랜잭션의 메타데이터 변경도 롤백하므로 부분 저장을 방지합니다." },
       ],
       figures: [
-        { image: image("survey-editor.jpg"), title: "질문 편집·발행", text: "세 가지 질문 유형과 필수 설정·선택지 관리" },
-        { image: image("survey-list.jpg"), title: "내 설문 목록", text: "검색·상태 필터와 복제·수정·삭제" },
+        {
+          "image": "/images/moa-survey/survey-editor.jpg",
+          "title": "질문 편집·발행",
+          "text": "세 가지 질문 유형과 필수 설정·선택지 관리"
+        },
+        codeExcerpts.moaRpc
       ],
       sources: [{ title: "편집기", url: source("src/surveys/SurveyEditorPage.jsx") }, { title: "원자 저장 RPC", url: source("supabase/migrations/20261005121903_save_survey_atomically.sql") }],
     },
@@ -56,11 +70,15 @@ export const moaSurvey = {
         { title: "문제 정의", text: "공개 링크로는 로그인 없이 응답할 수 있어야 하지만, 설문 수정과 제출된 답의 조회는 설문 소유자에게만 허용해야 했습니다." },
         { title: "접근 · RLS와 역할별 권한", text: "테이블의 RLS로 소유자별 접근을 제한하고, 공개 역할은 발행 설문·질문을 조회하도록 구성했습니다. 응답 테이블을 직접 쓰는 대신 제출 RPC를 호출합니다." },
         { title: "서버에서 다시 검증", text: "submit_survey_response에서 발행 상태, 질문·답변 형식, 필수 여부와 선택지 값을 확인한 뒤 저장합니다. 응답 제출과 질문 변경을 직렬화해 충돌을 다룹니다." },
-        { title: "결과와 후속 과제", text: "제작자 관리와 공개 참여의 권한 경계를 DB 정책과 함수로 표현했습니다. 공개 규모가 커지면 봇 방지·요청 제한과 비로그인 환경의 제출 검증을 더 보완할 계획입니다." },
+        { title: "조회 결과의 누락 방지", text: "기본 500행씩 페이지를 읽고, 답변 조회의 응답 ID는 40개씩 나눕니다. 전체 건수 또는 빈 페이지까지 이어 읽어 단일 응답 상한으로 결과가 잘리는 경우를 다룹니다." },
       ],
       figures: [
-        { image: image("public-survey.jpg"), title: "공개 설문 참여", text: "단일 선택·복수 선택·주관식 응답" },
-        { image: image("results.jpg"), title: "소유자 개별 응답 확인", text: "제출된 답과 시간을 건별로 조회" },
+        {
+          "image": "/images/moa-survey/public-survey.jpg",
+          "title": "공개 설문 참여",
+          "text": "단일 선택·복수 선택·주관식 응답"
+        },
+        codeExcerpts.moaPaging
       ],
       sources: [{ title: "제출·질문 변경 검증", url: source("supabase/migrations/20261002023721_serialize_responses_and_preserve_reordering.sql") }, { title: "테이블 권한", url: source("supabase/migrations/20261002024231_restrict_survey_table_grants.sql") }],
     },
@@ -68,13 +86,13 @@ export const moaSurvey = {
       layout: "case-study", dense: true,
       title: "결과와 회고 · 집계의 기준과 데이터 누락을 점검",
       sections: [
-        { title: "문제 해결 · 집계 기준", text: "건너뛴 선택형 답과 공백 주관식은 유효 응답에서 제외합니다. 복수 선택은 선택 횟수가 아닌 응답자 수를 분모로 사용하므로 항목 비율 합계가 100%를 넘을 수 있습니다." },
-        { title: "누락 방지와 CSV", text: "결과는 한 페이지 상한에서 끝내지 않고 이어서 조회합니다. CSV는 UTF-8 BOM과 따옴표 이스케이프를 적용하고, 수식처럼 시작하는 응답값을 문자열로 처리합니다." },
-        { title: "구현 결과", text: "세 가지 질문 유형의 제작·응답·분석과 CSV를 연결했습니다. 집계·조회·내보내기 로직은 함수와 테스트로 나누어 검증했습니다." },
-        { title: "회고 · 다시 한다면", text: "화면의 수치를 만드는 분모·조회 범위·권한까지 함께 확인하는 관점을 배웠습니다. 다중 계정 접근과 비로그인 제출을 포함한 브라우저 자동 검증을 보완하겠습니다." },
+        { title: "집계 기준 · 응답자 수를 분모로", text: "공백 주관식·건너뛴 답은 유효 응답에서 제외합니다. 복수 선택은 선택 횟수가 아닌 응답자 수가 분모여서 항목별 비율의 합계가 100%를 넘을 수 있습니다." },
+        { title: "CSV · 4종 수식 접두 문자 처리", text: "공백 뒤 =·+·-·@로 시작하는 응답을 문자열로 내보내고, 큰따옴표를 이스케이프합니다. UTF-8 BOM과 CRLF를 적용해 한글과 행 구분을 보존합니다." },
+        { title: "검증할 수 있는 결과", text: "설문 제작·제출·집계의 3개 질문 유형과 CSV를 연결했습니다. 처리 속도 개선 수치는 측정하지 않았고, 저장 원자성·조회 범위·집계 기준을 구현 결과로 남겼습니다." },
+        { title: "회고", text: "화면의 수치를 만드는 분모·조회 범위·권한을 함께 설계했습니다. 다음에는 다중 계정과 비로그인 제출을 포함한 통합 시험을 보완하겠습니다." },
       ],
       figures: [
-        { image: image("analytics.jpg"), title: "질문별 집계", text: "운영 점검용 데이터 · 서비스 성과 지표와 구분" },
+        codeExcerpts.moaCsv
       ],
       sources: [{ title: "집계·테스트", url: source("src/surveys/resultAnalytics.test.js") }, { title: "페이지네이션", url: source("src/surveys/resultPagination.js") }, { title: "CSV", url: source("src/surveys/resultExport.js") }],
     },

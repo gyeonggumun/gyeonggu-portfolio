@@ -1,3 +1,5 @@
+import { codeExcerpts } from "./codeExcerpts.js";
+
 const image = (name) => `/images/tutoroo/${name}`;
 const repository = "https://github.com/Tutoroo-project/Tutoroo_project";
 const front = `${repository}/tree/main/Tutoroo_project_front`;
@@ -26,9 +28,17 @@ export const tutoroo = {
         { title: "나의 역할 · 전반적인 프론트엔드 전담", text: "초기 Figma에서 로그인·계정 관리·수준 진단·학습·결제·대시보드의 화면 흐름을 설계했습니다. 이를 바탕으로 공통 컴포넌트와 주요 페이지, 상태관리·API 연동을 구현했습니다." },
         { title: "접근과 의사결정", text: "인증과 계정 찾기는 공통 모달, 학습·마이페이지·랭킹은 라우트로 나눴습니다. React Router와 Emotion으로 화면 구조를 구성하고 Zustand로 페이지 간 필요한 상태를 공유했습니다." },
       ],
+      metrics: [
+        { value: "6종", label: "공통 모달", note: "동시에 하나만 열기", url: "https://github.com/Tutoroo-project/Tutoroo_project/blob/e011b21e64b2a88c6f01cc55bf96f6917fdfc6ae/Tutoroo_project_front/src/stores/modalStore.js#L6-L27" },
+        { value: "8단계", label: "학습 상태", note: "수업 → 복습", url: "https://github.com/Tutoroo-project/Tutoroo_project/blob/e011b21e64b2a88c6f01cc55bf96f6917fdfc6ae/Tutoroo_project_front/src/stores/useStudyStore.js#L4-L24" },
+        { value: "1~2회", label: "주간 차트 월 조회", note: "7일이 포함된 월만 요청", url: "https://github.com/Tutoroo-project/Tutoroo_project/blob/e011b21e64b2a88c6f01cc55bf96f6917fdfc6ae/Tutoroo_project_front/src/pages/dashboards/DashboardPage.jsx#L361-L375" },
+      ],
       figures: [
-        { image: image("figma-initial.png"), title: "직접 제작한 Figma 초기 화면 흐름", text: "인증·계정·학습·결제·랭킹의 초기 설계 자료" },
-        { image: image("dashboard.png"), title: "구현한 학습 대시보드", text: "목표·주간 학습·이동 경로" },
+        {
+          "image": "/images/tutoroo/figma-initial.png",
+          "title": "직접 제작한 Figma 초기 화면 흐름",
+          "text": "인증·계정·학습·결제·랭킹의 초기 설계 자료"
+        }
       ],
       sources: [{ title: "GitHub 프로젝트", url: repository }, { title: "프론트엔드 구성", url: front }],
     },
@@ -40,12 +50,15 @@ export const tutoroo = {
         { title: "문제와 나의 구현", text: "로그인·회원가입·계정 찾기 화면이 겹치지 않고 자연스럽게 전환되도록 구성했습니다. 입력 검증과 제출 중 상태, 성공·실패 안내를 각 폼의 API 호출과 연결했습니다." },
         { title: "의사결정 · 공통 모달 상태 분리", text: "Zustand의 modalStore에서 로그인·회원가입·아이디 찾기·비밀번호 찾기·학습 목표·소셜 추가정보 모달을 관리했습니다. 하나를 열 때 나머지를 닫고, 전체 초기화 액션을 두었습니다." },
         { title: "수준 진단과 결과 연결", text: "목표 입력 후 문답 이력을 누적해 레벨테스트 API에 전달하고, 완료되면 로드맵 생성을 요청했습니다. 결과는 전역 상태에 저장해 결과 화면에서 과목·레벨·로드맵을 표시했습니다." },
-        { title: "사용자 경험과 회고", text: "진단·로드맵 생성 중 입력과 전송을 제한하고 로딩·오류를 표시했습니다. 새로고침 복구·재시도·인증 만료 이후의 복귀 흐름을 보완하겠습니다." },
+        { title: "구현 결과 · 모달 6종과 생성 중 상태", text: "공통 모달 6종을 상호 배타적으로 제어하고 진단·로드맵 생성 중 입력·전송을 제한했습니다. 새로고침 복구·인증 만료 뒤 복귀는 다음 검증 과제로 남았습니다." },
       ],
       figures: [
-        { image: image("signup.png"), title: "회원가입 UI", text: "입력 검증·이메일 인증 흐름" },
-        { image: image("level-test.png"), title: "대화형 수준 진단", text: "답변 이력을 이어가는 온보딩" },
-        { image: image("roadmap-result.png"), title: "레벨·로드맵 결과", text: "진단 결과와 다음 학습 연결" },
+        {
+          "image": "/images/tutoroo/level-test.png",
+          "title": "대화형 수준 진단",
+          "text": "답변 이력을 이어가는 온보딩"
+        },
+        codeExcerpts.tutorModal
       ],
       sources: [{ title: "공통 모달 상태관리", url: code("src/stores/modalStore.js") }, { title: "레벨테스트 구현", url: code("src/pages/leveltests/LevelTestPage.jsx") }],
     },
@@ -56,12 +69,16 @@ export const tutoroo = {
       sections: [
         { title: "문제와 나의 역할", text: "튜터 선택, 채팅, 문제 풀이, 피드백이 각각 분리되면 사용자가 현재 진행 단계를 알기 어렵습니다. 선택한 튜터와 학습 플랜을 연결하고, 단계별 화면과 입력 상태를 구성했습니다." },
         { title: "접근 · 학습 상태를 한곳에서 관리", text: "useStudyStore에 수업·휴식·테스트·채점·해설·AI 피드백·수업 평가·복습의 8단계 순서를 정의했습니다. 현재 단계와 남은 시간, 메시지·결과를 상태에 두고 화면에 반영했습니다." },
-        { title: "API 응답과 학습 마무리", text: "채팅의 빈 입력·중복 전송을 제한하고 응답 대기를 표시했습니다. 학습 마무리에서는 로그 저장 후 AI 피드백을 요청해 완료·오류 상태를 화면에 반영했습니다." },
+        { title: "8단계 상태와 비동기 완료", text: "수업·휴식·테스트·채점·해설·AI 피드백·수업 평가·복습의 8단계를 공유합니다. 빈 입력과 응답 대기 중 중복 전송을 제한하고, 완료 시 로그 저장 뒤 피드백을 요청합니다." },
         { title: "배운 점 · 비동기 상태의 경계", text: "화면 전환과 서버 응답이 동시에 일어나는 흐름에서 상태 초기화가 중요했습니다. 다음에는 중복 완료·응답 지연·세션 이탈·재접속을 반복 검증하고, 서버 기록과 UI 상태의 정합성을 보완하겠습니다." },
       ],
       figures: [
-        { image: image("tutor-selection.png"), title: "튜터 성향 선택 화면", text: "선택한 튜터를 학습에 연결" },
-        { image: image("study-chat.png"), title: "AI 튜터 학습 UI", text: "대화·현재 단계·타이머·입력" },
+        {
+          "image": "/images/tutoroo/study-chat.png",
+          "title": "AI 튜터 학습 UI",
+          "text": "대화·현재 단계·타이머·입력"
+        },
+        codeExcerpts.tutorModes
       ],
       sources: [{ title: "학습 세션 상태관리", url: code("src/stores/useStudyStore.js") }, { title: "학습 페이지 구현", url: code("src/pages/studys/StudyPage.jsx") }],
     },
@@ -70,15 +87,13 @@ export const tutoroo = {
       title: "대시보드와 부가 기능 · 학습 결과를 다시 다음 행동으로",
       sourceLabel: "자료·구현 코드",
       sections: [
-        { title: "구현 · 주간 기록과 차트", text: "플랜 시작일과 일차별 로드맵을 날짜에 매핑하고, 월간 로그를 모아 주간 완료율·점수 차트를 표시했습니다. 월 경계를 넘는 주는 필요한 월별 요청을 병렬로 보내고, 로그가 없으면 기본값으로 구성했습니다." },
-        { title: "전반적인 UI 범위", text: "학습 외에도 회원정보 수정·비밀번호 변경·탈퇴, 구독 상품 선택·결제 결과, 랭킹과 펫 화면을 구성했습니다. 결제 검증·순위 계산·AI 생성은 서버 결과를 받아 UI에서 표시하는 범위로 연결했습니다." },
-        { title: "결과 · 코드에서 확인한 구성", text: "16개 라우트, 6종 공통 모달과 8단계 학습 흐름을 구현했습니다. 학습 현황·피드백·랭킹·펫으로 학습 결과를 이어서 확인하도록 구성했습니다." },
-        { title: "회고 · 초기 설계에서 통합 화면까지", text: "여러 페이지를 같은 흐름과 스타일로 연결하며 공통 UI·상태·API 계약을 함께 관리하는 경험을 했습니다. 다음에는 재사용 가능한 폼, 요청 취소·캐시, 모바일·접근성 검증을 보완하겠습니다." },
+        { title: "기술 선택 · 월별 중복 요청 제거", text: "주간 7일에서 연·월 키를 Set으로 중복 제거해 1~2개 월만 조회합니다. 월 경계를 넘으면 2개 요청을 Promise.all로 병렬 실행하고 날짜 키로 점수와 완료 여부를 연결합니다." },
+        { title: "비동기 화면 정합성", text: "선택한 학습이 바뀌거나 컴포넌트가 해제되면 이전 요청 결과를 alive 플래그로 걸러냅니다. 응답은 주간 7칸에 매핑하고 점수와 완료율을 구성합니다." },
+        { title: "구현 결과 · 코드로 확인한 구성", text: "16개 라우트·6종 공통 모달·8단계 학습 상태를 구성했습니다. 차트는 일별 7회가 아닌 월 단위 1~2회 요청을 사용하며, 기존 방식 대비 초 단위 단축량을 측정한 것은 아닙니다." },
+        { title: "회고", text: "공통 UI·상태·API 계약을 함께 관리했습니다. 다음에는 요청 취소와 캐시, 중복 완료·지연 응답, 모바일·접근성을 반복 검증하겠습니다." },
       ],
       figures: [
-        { image: image("chart-feedback.png"), title: "학습 기록 차트와 피드백", text: "표시된 점수·71%는 시연 데이터" },
-        { image: image("ranking.png"), title: "랭킹·내 포인트 화면", text: "서버 집계 결과를 시각화" },
-        { image: image("pet.png"), title: "학습 동기부여를 위한 펫 UI", text: "상태·돌보기·성장 화면" },
+        codeExcerpts.tutorParallel
       ],
       sources: [{ title: "대시보드 날짜·로그 매핑", url: code("src/pages/dashboards/DashboardPage.jsx") }, { title: "화면 라우트 구성", url: code("src/routes/Router.jsx") }],
     },

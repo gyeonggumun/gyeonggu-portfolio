@@ -1,3 +1,5 @@
+import { codeExcerpts } from "./codeExcerpts.js";
+
 const image = (name) => `/images/monghyang/${name}.png`;
 const source = (path) => `https://github.com/Dreamlike-Forest/monghyang-frontend/blob/main/${path}`;
 
@@ -37,12 +39,27 @@ export const monghyang = {
           "text": "탐색 → 상세 → 구매·예약 흐름을 연결하고, 화면을 이동해도 선택한 상품·수량·예약 정보가 일관되게 이어지도록 구성했습니다."
         }
       ],
-      "figures": [
+      metrics: [
         {
-          "image": "/images/monghyang/brewery-search.png",
-          "title": "양조장 탐색",
-          "text": "지역과 조건을 확인하며 양조장 검색"
+          "value": "4개",
+          "label": "주문 문자열 정리",
+          "note": "공백·빈 값 정규화",
+          "url": "https://github.com/Dreamlike-Forest/monghyang-frontend/blob/d1c91cbd95666da36c702ea20e200b064d2ec71a/utils/orderApi.ts#L31-L34"
         },
+        {
+          "value": "2단계",
+          "label": "주문 API",
+          "note": "준비 → 승인 요청",
+          "url": "https://github.com/Dreamlike-Forest/monghyang-frontend/blob/d1c91cbd95666da36c702ea20e200b064d2ec71a/utils/orderApi.ts#L19-L55"
+        },
+        {
+          "value": "1개",
+          "label": "장바구니 조회 가드",
+          "note": "진행 중 중복 진입 제한",
+          "url": "https://github.com/Dreamlike-Forest/monghyang-frontend/blob/d1c91cbd95666da36c702ea20e200b064d2ec71a/components/Cart/CartStore.ts#L35-L38"
+        }
+      ],
+      "figures": [
         {
           "image": "/images/monghyang/brewery-detail.png",
           "title": "양조장 상세",
@@ -74,26 +91,17 @@ export const monghyang = {
           "text": "cart_id를 같은 키로 반복 append하고 입력 문자열을 정리했습니다. 주문 API의 Content-Type 수동 지정을 제거해 multipart boundary 생성을 브라우저에 맡겼습니다."
         },
         {
-          "title": "결과와 배운 점",
-          "text": "상품 선택 → 장바구니 → 주문 준비·승인 요청을 연결했습니다. 요청 배열·헤더·응답 구조까지 확인해야 화면과 서버가 같은 데이터를 다룰 수 있었습니다."
+          "title": "구현 결과 · 입력 규격을 코드로 고정",
+          "text": "선택한 N개 cart_id를 같은 키로 전송하고, 주문자·연락처·주소·상세 주소 4개 문자열을 정리했습니다. 준비·승인 2개 API의 multipart boundary는 브라우저가 생성하도록 했습니다."
         }
       ],
       "figures": [
-        {
-          "image": "/images/monghyang/product-detail.png",
-          "title": "01 상품 상세",
-          "text": "상품과 구매 옵션 선택"
-        },
         {
           "image": "/images/monghyang/cart.png",
           "title": "02 장바구니",
           "text": "수량 변경·삭제와 주문 요약"
         },
-        {
-          "image": "/images/monghyang/checkout.png",
-          "title": "03 주문·결제 · 테스트 화면",
-          "text": "배송 정보와 최종 금액을 확인하고 주문 요청"
-        }
+        codeExcerpts.mongOrder
       ],
       "sources": [
         {
@@ -124,31 +132,17 @@ export const monghyang = {
           "text": "마감 날짜·시간 선택을 제한하고 신청 인원을 잔여석과 비교했습니다. 예약 준비 → 테스트 결제 승인 요청 → 완료 안내와 예약 내역으로 흐름을 연결했습니다."
         },
         {
-          "title": "회고 · 개선 방향",
-          "text": "조회 실패와 실제 예약 마감을 구분해 안내하고, 잔여석 조회 실패 시 재시도를 제공하겠습니다. 실제 PG 연동은 테스트 결제 흐름과 별도로 검증해야 합니다."
+          "title": "검증 경계와 개선",
+          "text": "과거 날짜·예약 불가 날짜·잔여석 0인 시간대를 제한했습니다. 현재 코드는 잔여석 미조회(undefined)를 마감으로 처리하지 않으므로, 조회 실패 시 선택을 보류하고 재시도하는 흐름을 보완하겠습니다."
         }
       ],
       "figures": [
         {
-          "image": "/images/monghyang/brewery-search.png",
-          "title": "01 양조장 탐색",
-          "text": "지역과 체험 조건으로 검색"
-        },
-        {
-          "image": "/images/monghyang/brewery-detail.png",
-          "title": "02 상세 정보",
-          "text": "방문할 양조장 정보 확인"
-        },
-        {
-          "image": "/images/monghyang/experience-list.png",
-          "title": "03 체험 선택",
-          "text": "프로그램 선택 후 예약으로 이동"
-        },
-        {
           "image": "/images/monghyang/reservation-history.png",
           "title": "04 예약 내역",
           "text": "예약한 일정과 상태 확인"
-        }
+        },
+        codeExcerpts.mongReserve
       ],
       "sources": [
         {
@@ -164,36 +158,23 @@ export const monghyang = {
     {
       "layout": "case-study",
       "dense": true,
-      "title": "결과와 회고 · 시연으로 확인하는 구현",
+      "title": "구현 결과 · 병렬 조회와 상태 동기화",
       "sections": [
         {
-          "title": "구현 결과",
-          "text": "상품구매와 체험예약, 두 가지 주요 사용자 흐름의 프론트엔드 화면과 API 연동을 구성했습니다. 다음 페이지의 시연영상 2개에서 테스트 환경의 동작을 확인할 수 있습니다."
+          "title": "기술 선택 · 장바구니 상세 병렬 조회",
+          "text": "장바구니 목록을 받은 뒤 상품별 상세 조회를 Promise.all로 함께 실행합니다. isFetching으로 진행 중인 조회의 중복 진입을 막고, 완료 후 구독자에게 변경을 알립니다."
         },
         {
-          "title": "팀 성과",
-          "text": "몽향의 숲 팀으로 2025 학생 창업유망팀 300+ 성장트랙에 최종 선정되었으며, 2025 BDIA 사이드 프로젝트 아이디어 상을 수상했습니다."
+          "title": "구현 수치 · N개 요청을 병렬 묶음으로",
+          "text": "상품 N개라면 상세 API 호출도 N개입니다. 순차 대기 대신 한 묶음으로 요청하지만 호출 수를 줄인 캐시는 아닙니다. 실제 로딩 시간과 개선 전후 지연은 측정 기록이 없습니다."
         },
         {
-          "title": "핵심 교훈",
-          "text": "UI 완성도와 함께 상태 공유, 요청 형식, 실패 상황을 다뤄야 했습니다. 여러 화면에 걸친 데이터 흐름을 이해하며 프론트엔드와 백엔드의 연결 지점을 배웠습니다."
-        },
-        {
-          "title": "다시 한다면",
-          "text": "API 규격과 오류 응답을 먼저 합의하고 수량 변경·예약 마감·승인 실패 시나리오를 자동 검증하겠습니다. 장바구니 전체 재조회 비용도 개선할 계획입니다."
+          "title": "결과와 회고",
+          "text": "구매·체험 예약 2개 흐름을 시연으로 남겼습니다. 요청 규격과 상태 동기화를 함께 검토했고, 다음에는 전체 재조회 비용과 실패 시 복구를 측정하겠습니다."
         }
       ],
       "figures": [
-        {
-          "image": "/images/recognition-u300-2025.jpg",
-          "title": "학생 창업유망팀 300+",
-          "text": "2025.10.17 · 성장트랙 최종 선정"
-        },
-        {
-          "image": "/images/award-bdia-2025.png",
-          "title": "BDIA 사이드 프로젝트",
-          "text": "2025.12.12 · 아이디어 상"
-        }
+        codeExcerpts.mongCart
       ]
     },
     { layout: "videos", title: "시연영상 · 체험예약과 상품구매" },
