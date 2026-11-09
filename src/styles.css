@@ -1088,10 +1088,25 @@ details[open] > summary .when-closed {
 }
 .case-study-figures.has-technical figure { min-height: max-content; }
 .case-study-figures.has-technical > figure:first-child:nth-last-child(3) { grid-row: auto; }
-.case-study-figures.has-technical .slide-image { max-height: 6.5cqw; }
 .figure-count-1 .slide-image,
 .figure-count-2 .slide-image {
   max-height: 30cqw;
+}
+.slide-stage:has(.has-technical .slide-image-link) {
+  max-height: min(60dvh, calc(100dvh - 215px));
+}
+.layout-case-study:has(.has-technical .slide-image-link) {
+  aspect-ratio: auto;
+  min-height: 56.25cqw;
+}
+.layout-case-study:has(.has-technical .slide-image-link) .slide-content {
+  flex-basis: auto;
+}
+.slide-case-study:has(.has-technical .slide-image-link) {
+  height: auto;
+}
+.case-study-figures.has-technical .slide-image {
+  max-height: 26cqw;
 }
 .slide-case-study.is-text-only {
   grid-template-columns: 1fr;
@@ -1854,6 +1869,59 @@ details[open] > summary .when-closed {
   }
   .presentation-slide {
     border-color: #dce3d4;
+  }
+  .slide-stage:not(.is-zoomed):has(.case-study-figures .slide-image-link) {
+    max-height: 56dvh;
+  }
+  .slide-stage:not(.is-zoomed) .layout-case-study:has(.case-study-figures .slide-image-link) {
+    aspect-ratio: auto;
+    padding: 16px;
+  }
+  .slide-stage:not(.is-zoomed) .layout-case-study:has(.case-study-figures .slide-image-link) > h3 {
+    font-size: 17px;
+    margin: 10px 0 14px;
+  }
+  .slide-stage:not(.is-zoomed) .slide-case-study:has(.case-study-figures .slide-image-link) {
+    grid-template-columns: minmax(0, 1fr);
+    height: auto;
+    gap: 16px;
+  }
+  .slide-stage:not(.is-zoomed) .slide-case-study:has(.slide-image-link) .case-study-copy {
+    gap: 10px;
+  }
+  .slide-stage:not(.is-zoomed) .slide-case-study:has(.slide-image-link) .case-study-copy :is(h4, p) {
+    font-size: 12px;
+  }
+  .slide-stage:not(.is-zoomed) .slide-case-study:has(.slide-image-link) :is(.case-study-sources, .technical-source, .technical-figure pre, .technical-record > div) {
+    font-size: 10px;
+  }
+  .slide-stage:not(.is-zoomed) .slide-case-study:has(.slide-image-link) .project-metrics :is(dt, small) {
+    font-size: 10px;
+  }
+  .slide-stage:not(.is-zoomed) .slide-case-study:has(.slide-image-link) .project-metrics dd {
+    font-size: 15px;
+  }
+  .slide-stage:not(.is-zoomed) .slide-case-study:has(.slide-image-link) .code-line {
+    grid-template-columns: 3em minmax(0, 1fr);
+  }
+  .slide-stage:not(.is-zoomed) .slide-case-study:has(.case-study-figures .slide-image-link) .case-study-figures {
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: max-content;
+    gap: 16px;
+    border-left: 0;
+    padding-left: 0;
+  }
+  .slide-stage:not(.is-zoomed) .case-study-figures:has(.slide-image-link) > figure:first-child:nth-last-child(3) {
+    grid-row: auto;
+  }
+  .slide-stage:not(.is-zoomed) .case-study-figures .slide-image {
+    max-height: 66cqw;
+  }
+  .slide-stage:not(.is-zoomed) .case-study-figures:has(.slide-image-link) figcaption {
+    font-size: 11px;
+  }
+  .slide-stage:not(.is-zoomed) .case-study-figures:has(.slide-image-link) figcaption strong {
+    font-size: 12px;
   }
   .slide-field > p {
     font-size: 1.5cqw;

@@ -308,6 +308,7 @@ export default function ProjectViewer({ project, onClose }) {
           </button>
         </header>
         <div
+          key={index}
           className={`slide-stage${zoomed ? " is-zoomed" : ""}`}
           onTouchStart={(event) => {
             const point = event.changedTouches[0];
@@ -326,7 +327,6 @@ export default function ProjectViewer({ project, onClose }) {
           <div className="slide-canvas">
             <article
               className={`presentation-slide layout-${slide.layout}`}
-              key={index}
               aria-label={`${index + 1}페이지: ${slide.title}`}
             >
               <div className="slide-topline">
