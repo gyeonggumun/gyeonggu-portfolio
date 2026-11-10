@@ -66,10 +66,15 @@ function TechnicalFigure({ figure }) {
 
 function DemoVideo({ video, poster, compact = false, theater = false }) {
   const [playing, setPlaying] = useState(false);
+  const isFile = video.kind === "file";
+  const linkLabel = isFile ? "새 탭에서 보기" : "YouTube에서 보기";
   return (
-    <div className={`demo-video${compact ? " is-compact" : ""}`}>
+    <div className={`demo-video${compact ? " is-compact" : ""}${isFile ? " is-file" : ""}`}>
       <div className="demo-player">
-        {playing ? (
+        {playing && isFile && (
+          <video src={video.url} poster={poster} controls autoPlay playsInline preload="metadata" aria-label={video.title} />
+        )}
+        {playing && !isFile && (
           <iframe
             src={`https://www.youtube-nocookie.com/embed/${video.id}?rel=0`}
             title={video.title}
@@ -77,7 +82,8 @@ function DemoVideo({ video, poster, compact = false, theater = false }) {
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           />
-        ) : (
+        )}
+        {!playing && (
           <button className="demo-launch" onClick={() => setPlaying(true)} aria-label={`${video.title} 동영상 불러오기`}>
             <img src={poster} alt="" />
             <span className="demo-play" aria-hidden="true">▶</span>
@@ -88,13 +94,13 @@ function DemoVideo({ video, poster, compact = false, theater = false }) {
       {theater ? (
         <div className="demo-caption">
           <h4>{video.title}</h4>
-          <a href={video.url} target="_blank" rel="noreferrer">YouTube에서 보기 ↗</a>
+          <a href={video.url} target="_blank" rel="noreferrer">{linkLabel} ↗</a>
         </div>
       ) : (
         <>
           <h4>{video.title}</h4>
           {!compact && <p>{video.description}</p>}
-          <a href={video.url} target="_blank" rel="noreferrer">YouTube에서 보기 ↗</a>
+          <a href={video.url} target="_blank" rel="noreferrer">{linkLabel} ↗</a>
         </>
       )}
     </div>
@@ -257,6 +263,7 @@ export default function ProjectViewer({ project, onClose }) {
   }, []);
 
   const onKeyDown = (event) => {
+    if (event.target instanceof HTMLVideoElement) return;
     if (event.key === "ArrowRight") {
       event.preventDefault();
       move(1);

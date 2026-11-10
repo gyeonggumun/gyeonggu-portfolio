@@ -1195,11 +1195,16 @@ details[open] > summary .when-closed {
   background: #f2f4ef;
 }
 .demo-player iframe,
+.demo-player video,
 .demo-launch {
   width: 100%;
   height: 100%;
   display: block;
   border: 0;
+}
+.demo-player video {
+  background: #171a1f;
+  object-fit: contain;
 }
 .demo-launch {
   position: relative;
@@ -1872,6 +1877,21 @@ details[open] > summary .when-closed {
   }
   .slide-stage:not(.is-zoomed):has(.case-study-figures .slide-image-link) {
     max-height: 56dvh;
+  }
+  .slide-stage:not(.is-zoomed):has(.demo-video.is-file) {
+    max-height: 56dvh;
+  }
+  .slide-stage:not(.is-zoomed) .layout-videos:has(.demo-video.is-file) {
+    aspect-ratio: auto;
+    padding: 16px;
+  }
+  .slide-stage:not(.is-zoomed) .slide-videos:has(.demo-video.is-file) {
+    grid-template-columns: minmax(0, 1fr);
+    height: auto;
+    gap: 14px;
+  }
+  .slide-stage:not(.is-zoomed) .demo-video.is-file .demo-caption :is(h4, a) {
+    font-size: 11px;
   }
   .slide-stage:not(.is-zoomed) .layout-case-study:has(.case-study-figures .slide-image-link) {
     aspect-ratio: auto;
