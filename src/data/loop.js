@@ -29,7 +29,7 @@ export const loop = {
       id: "loop-distribution",
       kind: "file",
       title: "HAProxy 연결 분산",
-      description: "발표자료 시연 발췌 · 두 노드 UP과 세션 집계 변화",
+      description: "발표자료 원본 시연 · 두 노드 UP과 세션 집계 변화",
       url: "/videos/loop/distribution.mp4",
       poster: image("distribution.jpg"),
     },
@@ -37,7 +37,7 @@ export const loop = {
       id: "loop-failover",
       kind: "file",
       title: "웹 이중화 시연",
-      description: "PC1 웹 노드 중단 후 PC2가 서비스를 이어가는 발표 시연 발췌",
+      description: "PC1 웹 노드 중단 후 PC2가 서비스를 이어가는 원본 시연",
       url: "/videos/loop/failover.mp4",
       poster: image("failover.jpg"),
     },
@@ -70,7 +70,7 @@ export const loop = {
       sections: [
         { title: "k3s 배포와 노드 내부 라우팅", text: "Web·API 이미지를 두 VM에 전달하고 각 Edge가 같은 노드의 Web·API로 요청을 보냅니다. HAProxy는 HTTPS 준비 상태를 확인하고 장애 노드를 새 연결의 대상에서 제외합니다." },
         { title: "배포 전에 실행 상태 대조", text: "릴리스 도구에 Web·API 실행본 2개의 준비 상태와 양쪽 API의 DB·토큰 설정 일치 여부를 확인하는 검사를 추가했습니다. 배포 기록에는 이미지와 런타임 설정을 대조한 결과를 남겼습니다." },
-        { title: "10월 30일 시험 · 웹 112건과 API 112건", text: "PC2 DB가 살아 있는 상태에서 PC1 Ubuntu VM을 중단했습니다. HAProxy의 PC1 DOWN·PC2 UP과 관측 요청 224건의 HTTP 200을 확인했습니다. 영상은 11월 4일 시연 발췌입니다." },
+        { title: "10월 30일 시험 · 웹 112건과 API 112건", text: "PC2 DB가 살아 있는 상태에서 PC1 Ubuntu VM을 중단했습니다. HAProxy의 PC1 DOWN·PC2 UP과 관측 요청 224건의 HTTP 200을 확인했습니다. 영상은 11월 4일 시연 원본입니다." },
       ],
       figures: [
         { image: image("failover.jpg"), title: "노드 중단 후 HAProxy 백엔드 상태", text: "11월 4일 영상 프레임 · PC1 DOWN / PC2 UP" },
