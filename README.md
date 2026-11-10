@@ -104,7 +104,7 @@ Vercel: [gyeonggu-portfolio.vercel.app](https://gyeonggu-portfolio.vercel.app)
 
 Vercel 설정은 [`vercel.json`](vercel.json)에 있습니다. 빌드 명령은 `npm run build`, 출력 폴더는 `dist`입니다. 환경 변수나 별도 서버는 필요하지 않습니다.
 
-Vercel 프로젝트 이름은 `gyeonggu-portfolio`이며, 현재 배포는 소스 직접 업로드 방식으로 진행합니다. GitHub 저장소 연동은 Vercel GitHub 통합 권한 설정 후 별도로 연결해야 하며, 현재 GitHub 푸시만으로 자동 배포되지는 않습니다.
+Vercel 프로젝트 `gyeonggu-portfolio`는 이 GitHub 저장소와 연결되어 있습니다. `main` 브랜치에 푸시하거나 변경 사항을 병합하면 Vercel이 빌드하고 공개 사이트에 자동 배포합니다.
 
 ## 확인한 동작
 
