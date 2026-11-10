@@ -1,5 +1,54 @@
 // GitHub의 고정 커밋에서 원문 그대로 발췌합니다. 블록 사이 생략은 뷰어에서 표시합니다.
 export const codeExcerpts = {
+  "loopRelease": {
+    "title": "배포 전 실행 상태 확인",
+    "text": "대상 서비스의 Ready 실행본 2개와 API 설정 일치 여부를 검사",
+    "snippet": {
+      "file": "release.py",
+      "path": "infrastructure/tools/webapi-release/release.py",
+      "language": "Python",
+      "commit": "015d60fcef1ceeb7319c24ff9b736c8775e622e1",
+      "blob": "9470ef76479462d9d8bbc8da616c73719a7ec5cf",
+      "url": "https://github.com/telecom-carrier-Loop/telecom-security-project/blob/015d60fcef1ceeb7319c24ff9b736c8775e622e1/infrastructure/tools/webapi-release/release.py#L321-L327",
+      "blocks": [
+        {
+          "start": 321,
+          "lines": [
+            "    for name, item in deployments.items():",
+            "        if item['spec'].get('replicas') != 2 or item.get('status', {}).get('readyReplicas') != 2:",
+            "            raise RuntimeError(name + ' must have two Ready replicas')",
+            "        pods(name)",
+            "    live = [probe(p['metadata']['name'])['protected'] for p in pods('telecom-api')]",
+            "    if live[0] != live[1]:",
+            "        raise RuntimeError('Current API DB/token settings differ between Pods')"
+          ]
+        }
+      ]
+    }
+  },
+  "loopBackup": {
+    "title": "시간당 예약 백업과 중복 실행 방지",
+    "text": "1시간 간격, 제한 권한 실행, 기존 작업이 실행 중이면 새 작업 생략",
+    "snippet": {
+      "file": "mysql84-backup-schedule.ps1",
+      "path": "infrastructure/tools/mysql84-backup-schedule.ps1",
+      "language": "PowerShell",
+      "commit": "015d60fcef1ceeb7319c24ff9b736c8775e622e1",
+      "blob": "576ca17efde42b58334a0e4d108d9a3f02c491ea",
+      "url": "https://github.com/telecom-carrier-Loop/telecom-security-project/blob/015d60fcef1ceeb7319c24ff9b736c8775e622e1/infrastructure/tools/mysql84-backup-schedule.ps1#L142-L145",
+      "blocks": [
+        {
+          "start": 142,
+          "lines": [
+            "        # Omitting RepetitionDuration repeats indefinitely; do not use TimeSpan.MaxValue.",
+            "        $trigger = New-ScheduledTaskTrigger -Once -At ((Get-Date).AddHours(1)) -RepetitionInterval (New-TimeSpan -Hours 1)",
+            "        $principal = New-ScheduledTaskPrincipal -UserId $sid -LogonType Interactive -RunLevel Limited",
+            "        $settings = New-ScheduledTaskSettingsSet -Disable -StartWhenAvailable -MultipleInstances IgnoreNew -ExecutionTimeLimit (New-TimeSpan -Minutes 10) -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries"
+          ]
+        }
+      ]
+    }
+  },
   "mongCart": {
     "title": "상세 조회를 병렬로 묶고 공유 상태 갱신",
     "text": "동시 조회 가드와 Promise.all · 완료 후 구독자 알림",

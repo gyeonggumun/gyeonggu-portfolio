@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="650" viewBox="0 0 960 650">
+  <title>LOOP 실습 인프라 구성</title>
+  <defs>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4" orient="auto"><path d="M0 0l8 4-8 4z" fill="#72569d"/></marker>
+  </defs>
+  <rect width="960" height="650" rx="24" fill="#f6f2fb"/>
+  <g fill="#ece4f7" stroke="#d4c4e8" stroke-width="2">
+    <rect x="309" y="48" width="342" height="85" rx="14"/>
+    <rect x="81" y="228" width="315" height="122" rx="14"/>
+    <rect x="564" y="228" width="315" height="122" rx="14"/>
+    <rect x="81" y="479" width="315" height="98" rx="14"/>
+    <rect x="564" y="479" width="315" height="98" rx="14"/>
+  </g>
+  <g fill="none" stroke="#72569d" stroke-width="3" marker-end="url(#arrow)">
+    <path d="M480 133v46H238v44"/><path d="M480 179h242v44"/>
+    <path d="M238 350v59h484v65"/>
+    <path d="M564 528H401"/>
+  </g>
+  <path d="M722 350v59" fill="none" stroke="#72569d" stroke-width="3"/>
+  <g font-family="Arial, sans-serif" text-anchor="middle" fill="#34264c">
+    <g font-size="25" font-weight="700">
+      <text x="480" y="86">HAProxy · HTTPS</text>
+      <text x="238" y="269">PC1 · k3s</text><text x="722" y="269">PC2 · k3s</text>
+      <text x="238" y="518">MySQL Replica</text><text x="722" y="518">MySQL Primary</text>
+    </g>
+    <g font-size="19">
+      <text x="480" y="112">Round Robin · Health check</text>
+      <text x="238" y="304">Nginx Edge · Web · API</text><text x="722" y="304">Nginx Edge · Web · API</text>
+      <text x="238" y="331">Control Plane + Worker</text><text x="722" y="331">Worker</text>
+      <text x="480" y="399">API → Primary</text>
+      <text x="238" y="550">Read only</text><text x="722" y="550">Read / Write</text>
+      <text x="480" y="511" font-size="17">GTID / TLS</text>
+    </g>
+  </g>
+</svg>

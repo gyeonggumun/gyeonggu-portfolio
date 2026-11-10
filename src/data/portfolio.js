@@ -1,5 +1,6 @@
 import { monghyang } from "./monghyang";
 import { safestay } from "./safestay";
+import { loop } from "./loop";
 import { cleanticket } from "./cleanticket";
 import { grayguard } from "./grayguard";
 import { dramacalendar } from "./dramacalendar";
@@ -112,10 +113,11 @@ export const skills = [
 export const projects = [
   monghyang,
   safestay,
-  cleanticket,
+  loop,
   moaSurvey,
   reflection,
   processingStudy,
+  cleanticket,
   grayguard,
   dramacalendar,
   tutoroo,

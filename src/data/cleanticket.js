@@ -5,10 +5,10 @@ const rules = "https://app.notion.com/p/oreumi/IDS-IPS-376ebaa8982b8041bb78e2b61
 const graylog = "https://app.notion.com/p/oreumi/Graylog-379ebaa8982b805db188d1dda8f48b43";
 
 export const cleanticket = {
-  id: "team-03",
+  id: "team-08",
   category: "team",
-  featured: true,
-  number: "03",
+  featured: false,
+  number: "08",
   title: "CleanTicket",
   description: "공연 예매 서비스를 대상으로 한 보안 관제 프로젝트. Snort IDS/IPS 규칙과 Graylog 서버·로그 연동을 맡아 공격 징후를 중앙 관제에서 확인했습니다.",
   image: image("cover.png"),
