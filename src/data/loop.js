@@ -17,7 +17,7 @@ export const loop = {
   number: "03",
   title: "LOOP · 통신사 서비스 연속성",
   description: "가상 통신사 보안 관제 프로젝트. 4인 팀의 팀장으로 Docker·k3s 배포, HAProxy 웹 이중화, MySQL 복제·백업·복원 검증을 담당했습니다.",
-  image: image("cover.svg"),
+  image: image("cover.png"),
   period: "2026.10 ~ 2026.11",
   role: "4인 팀 · 팀장 / 인프라·이중화",
   technologies: ["Docker", "k3s", "HAProxy", "Nginx", "MySQL 8.4", "PowerShell"],
@@ -36,8 +36,8 @@ export const loop = {
     {
       id: "loop-failover",
       kind: "file",
-      title: "웹 노드 중단 전후",
-      description: "발표자료 시연 발췌 · PC1 DOWN, PC2 UP 전환 비교",
+      title: "웹 이중화 시연",
+      description: "PC1 웹 노드 중단 후 PC2가 서비스를 이어가는 발표 시연 발췌",
       url: "/videos/loop/failover.mp4",
       poster: image("failover.jpg"),
     },
@@ -121,6 +121,6 @@ export const loop = {
       ],
       sources: [{ title: "HTTPS 이슈", url: issue(33) }, { title: "VM 복구 이슈", url: issue(36) }, { title: "DB 접근 이슈", url: issue(40) }, { title: "전체 장애 대응 이슈", url: issue(44) }, { title: "출발지 보완 PR", url: pull(65) }],
     },
-    { layout: "videos", title: "인프라 시연 · 연결 분산과 웹 노드 중단 전후" },
+    { layout: "videos", title: "인프라 시연 · 연결 분산과 웹 이중화" },
   ],
 };

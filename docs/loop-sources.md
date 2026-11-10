@@ -34,3 +34,14 @@ PR 62개 중 60개가 병합됐고 #57·#59는 병합 없이 종료됐습니다.
 - **HTTP 200 응답 224건**은 10월 30일 PC2 DB 유지 상태에서 PC1 Ubuntu VM을 중단한 시험의 웹 112건과 API 112건입니다. 요청의 범위는 해당 관측 구간이며 전환 소요 시간은 측정값이 없습니다. [웹 장애 전환 기록](https://github.com/telecom-carrier-Loop/telecom-security-project/blob/015d60fcef1ceeb7319c24ff9b736c8775e622e1/docs/operations/2026-10-30-web-ha-failover.md)
 - **테이블 26개 검사 통과**는 11월 3일 선정한 Primary 백업을 격리된 시험 MySQL에 복원한 결과입니다. 제출 화면과 팀 저장소 캡처에서 검사 문구를 확인했습니다. [최종 백업 검증](https://github.com/telecom-carrier-Loop/telecom-security-project/blob/015d60fcef1ceeb7319c24ff9b736c8775e622e1/docs/operations/2026-11-03-final-backup-validation.md)
 - **시연 영상 두 편**은 제출 PPT의 HAProxy 트래픽 분산 영상과 PC1 Ubuntu VM 중단 영상입니다. 공개용으로 브라우저 주소와 작업 창을 제외하고 HAProxy 상태 표를 발췌했습니다. VM 중단 영상은 중단 전후 장면을 이어 붙였습니다. 영상의 11월 4일 시연과 224건의 10월 30일 시험 기록은 서로 다른 자료입니다. [인프라 시연 증거 PR #64](https://github.com/telecom-carrier-Loop/telecom-security-project/pull/64)
+
+## 대표 이미지
+
+내장 이미지 생성 도구로 만든 콘셉트 이미지입니다. 통신사 운영센터와 두 웹 노드를 축소 모형으로 표현했습니다. [대표 이미지](../public/images/loop/cover.png)
+
+<details>
+<summary>이미지 생성 프롬프트</summary>
+
+Use case: stylized-concept. Create a wide 16:10 website portfolio project cover for a fictional telecom infrastructure project. Match a cohesive editorial portfolio series with realistic miniature diorama photography, warm ivory paper texture, soft studio daylight and refined, simple typography. At left on clean ivory, place a large dark plum high-contrast editorial serif title exactly "LOOP", with the smaller Korean subtitle exactly "통신사 보안 인프라" below. At right, create a tactile architectural miniature of a compact telecom operations center with a small cellular antenna and exactly two separate dark plum server rack buildings, linked by subtle amber fiber optic tracks branching from a single ivory gateway. Suggest resilient parallel infrastructure through the composition. Use a restrained warm cream, muted plum and slate palette, natural shadows, elegant materials, and quiet premium editorial art direction. Keep all type and major objects comfortably inside the central 84 percent of the canvas for card cropping. No other text, watermarks, real carrier branding, user interfaces, cyberpunk neon, or oversized security symbols.
+
+</details>
