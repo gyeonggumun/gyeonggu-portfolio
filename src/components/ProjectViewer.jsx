@@ -19,11 +19,11 @@ function EmptyField({ label, children, className = "" }) {
   );
 }
 
-function SlideImage({ src, label = "이미지를 추가할 자리", enlarge = false }) {
+function SlideImage({ src, label = "이미지를 추가할 자리", onPreview }) {
   if (src) {
     const image = <img className="slide-image" src={src} alt={label} />;
-    return enlarge ? (
-      <a className="slide-image-link" href={src} target="_blank" rel="noreferrer" title="클릭하면 원본 이미지를 새 탭에서 엽니다" aria-label={`${label} 원본 이미지 보기`}>{image}</a>
+    return onPreview ? (
+      <button className="slide-image-link" type="button" onClick={() => onPreview({ src, label })} title="이미지 크게 보기" aria-label={`${label} 크게 보기`}>{image}</button>
     ) : image;
   }
   return (
@@ -31,6 +31,51 @@ function SlideImage({ src, label = "이미지를 추가할 자리", enlarge = fa
       <Icon name="image" size={30} />
       <span>{label}</span>
     </div>
+  );
+}
+
+function ImagePreview({ image, onClose }) {
+  const dialogRef = useRef(null);
+
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    const focused = document.activeElement;
+    dialog.showModal();
+    return () => {
+      dialog.close();
+      focused?.focus();
+    };
+  }, []);
+
+  return (
+    <dialog
+      ref={dialogRef}
+      className="image-preview"
+      aria-labelledby="image-preview-title"
+      onCancel={(event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        onClose();
+      }}
+      onKeyDown={(event) => {
+        event.stopPropagation();
+        if (event.key === "Tab") {
+          event.preventDefault();
+          dialogRef.current.querySelector("button").focus();
+        }
+      }}
+      onClick={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
+    >
+      <header className="image-preview-header">
+        <h3 id="image-preview-title">{image.label}</h3>
+        <button className="icon-button" type="button" onClick={onClose} aria-label="이미지 닫기" autoFocus>
+          <Icon name="close" />
+        </button>
+      </header>
+      <img src={image.src} alt={image.label} />
+    </dialog>
   );
 }
 
@@ -107,7 +152,7 @@ function DemoVideo({ video, poster, compact = false, theater = false }) {
   );
 }
 
-function SlideContent({ project, slide }) {
+function SlideContent({ project, slide, onPreview }) {
   switch (slide.layout) {
     case "case-study":
       return (
@@ -140,7 +185,7 @@ function SlideContent({ project, slide }) {
             <div className={`case-study-figures${!slide.includeVideos ? ` figure-count-${slide.figures.length}` : ""}${slide.figures.some((figure) => figure.snippet || figure.facts) ? " has-technical" : ""}`}>
               {slide.figures.map((figure) => (
                 <figure key={figure.image || figure.title}>
-                  {figure.snippet || figure.facts ? <TechnicalFigure figure={figure} /> : <SlideImage src={figure.image} label={figure.title} enlarge />}
+                  {figure.snippet || figure.facts ? <TechnicalFigure figure={figure} /> : <SlideImage src={figure.image} label={figure.title} onPreview={onPreview} />}
                   <figcaption><strong>{figure.title}</strong><span>{figure.text}</span></figcaption>
                 </figure>
               ))}
@@ -165,6 +210,7 @@ function SlideContent({ project, slide }) {
           <SlideImage
             src={slide.image || project.image}
             label="프로젝트 대표 이미지"
+            onPreview={onPreview}
           />
           <div className="overview-copy">
             <EmptyField label="PROJECT">{project.title}</EmptyField>
@@ -187,7 +233,7 @@ function SlideContent({ project, slide }) {
               {slide.items[0]?.text}
             </EmptyField>
           </div>
-          <SlideImage src={slide.image} label="설계도 또는 구현 화면" />
+          <SlideImage src={slide.image} label="설계도 또는 구현 화면" onPreview={onPreview} />
         </div>
       );
     case "gallery":
@@ -198,7 +244,7 @@ function SlideContent({ project, slide }) {
               <SlideImage
                 src={slide.items[i]?.image}
                 label={slide.items[i]?.title || `화면 ${String(i + 1).padStart(2, "0")}`}
-                enlarge
+                onPreview={onPreview}
               />
               <EmptyField label={slide.items[i]?.title || "화면 설명"}>
                 {slide.items[i]?.text}
@@ -241,6 +287,7 @@ function SlideContent({ project, slide }) {
 export default function ProjectViewer({ project, onClose }) {
   const [index, setIndex] = useState(0);
   const [zoomed, setZoomed] = useState(false);
+  const [previewImage, setPreviewImage] = useState(null);
   const dialogRef = useRef(null);
   const touch = useRef(null);
   const slide = project.slides[index];
@@ -345,7 +392,7 @@ export default function ProjectViewer({ project, onClose }) {
               </div>
               <h3>{slide.title}</h3>
               <div className="slide-content">
-                <SlideContent project={project} slide={slide} />
+                <SlideContent project={project} slide={slide} onPreview={setPreviewImage} />
               </div>
               <div className="slide-footer">
                 <span>
@@ -428,6 +475,7 @@ export default function ProjectViewer({ project, onClose }) {
           </div>
         )}
       </div>
+      {previewImage && <ImagePreview image={previewImage} onClose={() => setPreviewImage(null)} />}
     </dialog>
   );
 }
