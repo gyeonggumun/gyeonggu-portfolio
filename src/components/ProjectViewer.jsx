@@ -34,7 +34,7 @@ function SlideImage({ src, label = "이미지를 추가할 자리", onPreview })
   );
 }
 
-function ImagePreview({ image, onClose }) {
+function ContentPreview({ preview, onClose }) {
   const dialogRef = useRef(null);
 
   useEffect(() => {
@@ -50,8 +50,8 @@ function ImagePreview({ image, onClose }) {
   return (
     <dialog
       ref={dialogRef}
-      className="image-preview"
-      aria-labelledby="image-preview-title"
+      className={`image-preview${preview.figure ? " code-preview" : ""}`}
+      aria-labelledby="preview-title"
       onCancel={(event) => {
         event.preventDefault();
         event.stopPropagation();
@@ -60,8 +60,16 @@ function ImagePreview({ image, onClose }) {
       onKeyDown={(event) => {
         event.stopPropagation();
         if (event.key === "Tab") {
-          event.preventDefault();
-          dialogRef.current.querySelector("button").focus();
+          const controls = dialogRef.current.querySelectorAll('button:not([disabled]), a[href]');
+          const first = controls[0];
+          const last = controls[controls.length - 1];
+          if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+          } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
+          }
         }
       }}
       onClick={(event) => {
@@ -69,23 +77,30 @@ function ImagePreview({ image, onClose }) {
       }}
     >
       <header className="image-preview-header">
-        <h3 id="image-preview-title">{image.label}</h3>
-        <button className="icon-button" type="button" onClick={onClose} aria-label="이미지 닫기" autoFocus>
+        <h3 id="preview-title">{preview.label}</h3>
+        <button className="icon-button" type="button" onClick={onClose} aria-label={preview.figure ? "코드 닫기" : "이미지 닫기"} autoFocus>
           <Icon name="close" />
         </button>
       </header>
-      <img src={image.src} alt={image.label} />
+      {preview.figure ? <TechnicalFigure figure={preview.figure} /> : <img src={preview.src} alt={preview.label} />}
     </dialog>
   );
 }
 
-function TechnicalFigure({ figure }) {
+function TechnicalFigure({ figure, onPreview }) {
   const evidence = figure.snippet || figure.facts;
   return (
     <div className={`technical-figure${figure.facts ? " is-record" : ""}`}>
-      <a className="technical-source" href={evidence.url} target="_blank" rel="noreferrer">
-        <span>{evidence.file}</span><span>{figure.snippet ? "GitHub 코드 발췌" : "GitHub 구현 기록"} ↗</span>
-      </a>
+      <div className="technical-heading">
+        <a className="technical-source" href={evidence.url} target="_blank" rel="noreferrer">
+          <span>{evidence.file}</span><span>{figure.snippet ? "GitHub 코드 발췌" : "GitHub 구현 기록"} ↗</span>
+        </a>
+        {onPreview && (
+          <button className="technical-expand" type="button" onClick={() => onPreview({ figure, label: figure.title })} aria-label={`${figure.title} ${figure.snippet ? "코드" : "기술 기록"} 크게 보기`}>
+            확대 <Icon name="diagonal" size={12} />
+          </button>
+        )}
+      </div>
       {figure.snippet ? (
         <pre aria-label={`${evidence.file} ${evidence.language} 코드 발췌`}><code>
           {evidence.blocks.map((block, index) => (
@@ -185,7 +200,7 @@ function SlideContent({ project, slide, onPreview }) {
             <div className={`case-study-figures${!slide.includeVideos ? ` figure-count-${slide.figures.length}` : ""}${slide.figures.some((figure) => figure.snippet || figure.facts) ? " has-technical" : ""}`}>
               {slide.figures.map((figure) => (
                 <figure key={figure.image || figure.title}>
-                  {figure.snippet || figure.facts ? <TechnicalFigure figure={figure} /> : <SlideImage src={figure.image} label={figure.title} onPreview={onPreview} />}
+                  {figure.snippet || figure.facts ? <TechnicalFigure figure={figure} onPreview={onPreview} /> : <SlideImage src={figure.image} label={figure.title} onPreview={onPreview} />}
                   <figcaption><strong>{figure.title}</strong><span>{figure.text}</span></figcaption>
                 </figure>
               ))}
@@ -287,7 +302,7 @@ function SlideContent({ project, slide, onPreview }) {
 export default function ProjectViewer({ project, onClose }) {
   const [index, setIndex] = useState(0);
   const [zoomed, setZoomed] = useState(false);
-  const [previewImage, setPreviewImage] = useState(null);
+  const [preview, setPreview] = useState(null);
   const dialogRef = useRef(null);
   const touch = useRef(null);
   const slide = project.slides[index];
@@ -392,7 +407,7 @@ export default function ProjectViewer({ project, onClose }) {
               </div>
               <h3>{slide.title}</h3>
               <div className="slide-content">
-                <SlideContent project={project} slide={slide} onPreview={setPreviewImage} />
+                <SlideContent project={project} slide={slide} onPreview={setPreview} />
               </div>
               <div className="slide-footer">
                 <span>
@@ -475,7 +490,7 @@ export default function ProjectViewer({ project, onClose }) {
           </div>
         )}
       </div>
-      {previewImage && <ImagePreview image={previewImage} onClose={() => setPreviewImage(null)} />}
+      {preview && <ContentPreview preview={preview} onClose={() => setPreview(null)} />}
     </dialog>
   );
 }
