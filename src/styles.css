@@ -1199,6 +1199,36 @@ details[open] > summary .when-closed {
 .case-study-figures.has-technical .slide-image {
   max-height: 6.5cqw;
 }
+.slide-case-study.is-dense:has(.has-technical.figure-count-2 .slide-image-link) {
+  grid-template-columns: 0.9fr 1.25fr;
+}
+.case-study-figures.has-technical.figure-count-2:has(.slide-image-link) {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) max-content;
+  align-content: stretch;
+  align-items: stretch;
+}
+.case-study-figures.has-technical.figure-count-2:has(.slide-image-link) figure {
+  min-width: 0;
+  min-height: 0;
+}
+.case-study-figures.has-technical.figure-count-2 .slide-image-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  min-height: 0;
+}
+.case-study-figures.has-technical.figure-count-2 .slide-image {
+  width: 100%;
+  height: 100%;
+  max-height: 14cqw;
+  object-fit: contain;
+}
+.case-study-figures.has-technical.figure-count-2:has(.slide-image-link) .technical-figure pre {
+  font-size: 0.86cqw;
+  line-height: 1.45;
+}
 .slide-case-study.is-text-only {
   grid-template-columns: 1fr;
 }
