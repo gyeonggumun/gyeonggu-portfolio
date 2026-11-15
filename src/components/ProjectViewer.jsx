@@ -101,6 +101,7 @@ function TechnicalFigure({ figure, onPreview }) {
           </button>
         )}
       </div>
+      <div className="technical-body">
       {figure.snippet ? (
         <pre aria-label={`${evidence.file} ${evidence.language} 코드 발췌`}><code>
           {evidence.blocks.map((block, index) => (
@@ -120,6 +121,12 @@ function TechnicalFigure({ figure, onPreview }) {
           {evidence.rows.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
         </dl>
       )}
+      {onPreview && (
+        <button className="technical-preview-trigger" type="button" onClick={() => onPreview({ figure, label: figure.title })} aria-label={`${figure.title} 미리보기 확대`}>
+          <span>전체 {figure.snippet ? "코드" : "기술 기록"} 보기 <Icon name="diagonal" size={12} /></span>
+        </button>
+      )}
+      </div>
     </div>
   );
 }

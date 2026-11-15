@@ -1094,6 +1094,33 @@ details[open] > summary .when-closed {
   color: #27392e;
 }
 .technical-figure code { font-family: Consolas, "Courier New", monospace; }
+.technical-body { position: relative; }
+.technical-preview-trigger {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0.6cqw;
+  border: 0;
+  background: linear-gradient(transparent 70%, #f0f2ed);
+  color: var(--accent);
+  font: inherit;
+  font-size: 0.8cqw;
+  cursor: zoom-in;
+}
+.technical-preview-trigger span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4cqw;
+  padding: 0.35cqw 0.6cqw;
+  border-radius: 0.3cqw;
+  background: #f0f2ed;
+}
+.technical-preview-trigger:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
 .code-block, .code-gap { display: block; }
 .code-line { display: grid; grid-template-columns: 2.6cqw minmax(0, 1fr); }
 .code-line-number { color: #8a9484; user-select: none; }
@@ -1204,9 +1231,8 @@ details[open] > summary .when-closed {
 }
 .case-study-figures.has-technical.figure-count-2:has(.slide-image-link) {
   grid-template-columns: minmax(0, 1fr);
-  grid-template-rows: minmax(0, 1fr) max-content;
-  align-content: stretch;
-  align-items: stretch;
+  grid-template-rows: repeat(2, max-content);
+  align-content: center;
 }
 .case-study-figures.has-technical.figure-count-2:has(.slide-image-link) figure {
   min-width: 0;
@@ -1216,8 +1242,23 @@ details[open] > summary .when-closed {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.case-study-figures.has-technical.figure-count-2:has(.slide-image-link) > figure > :first-child {
+  flex: 0 0 14cqw;
+  height: 14cqw;
+  overflow: hidden;
+}
+.case-study-figures.has-technical.figure-count-2:has(.slide-image-link) .technical-figure {
+  display: flex;
+  flex-direction: column;
+}
+.case-study-figures.has-technical.figure-count-2:has(.slide-image-link) .technical-heading {
+  flex-shrink: 0;
+}
+.case-study-figures.has-technical.figure-count-2:has(.slide-image-link) .technical-body {
   flex: 1;
   min-height: 0;
+  overflow: hidden;
 }
 .case-study-figures.has-technical.figure-count-2 .slide-image {
   width: 100%;
