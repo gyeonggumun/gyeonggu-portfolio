@@ -238,7 +238,7 @@ export default function App() {
           </div>
           <div className="journey-group">
             <div className="group-label">
-              <h3>교육 경력</h3>
+              <h3>교육</h3>
               <span>EDUCATION</span>
             </div>
             <div className="credential-list">
