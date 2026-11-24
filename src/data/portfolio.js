@@ -14,7 +14,7 @@ import { processingStudy } from "./processingStudy";
 // 실제 내용은 이 파일에서 교체합니다. 빈 값은 화면에서 준비 중 상태로 표시됩니다.
 export const profile = {
   name: "문경구",
-  role: "Web Developer",
+  role: "시큐어 코딩",
   school: "동서대학교 컴퓨터공학과",
   introduction:
     "사용자 경험과 서비스 안정성을 함께 설계하는 개발자입니다. 웹 개발과 DB·보안 인프라 경험을 바탕으로, 개발 단계부터 보안을 구현하는 시큐어 코딩에 도전합니다.",
