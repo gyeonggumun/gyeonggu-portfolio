@@ -54,10 +54,9 @@ export const education = [
     id: "education-03",
     title: "SKT 알래프 교육",
     organization: "SKT",
-    period: "진행 중 · 2026.11.12 수료 예정",
-    description: "현재 교육에 참여하고 있으며, 수료 후 수료증을 추가할 예정입니다.",
-    image: null,
-    pendingLabel: "수료 후 수료증 추가 예정",
+    period: "2026.08.11 ~ 2026.11.12 · 수료",
+    description: "AI 보안 에이전트 개발 과정을 수료하고 케테르(최고 등급) 인증을 받았습니다.",
+    image: "/images/completion-skt-aleph.png",
   },
   {
     id: "education-02",
