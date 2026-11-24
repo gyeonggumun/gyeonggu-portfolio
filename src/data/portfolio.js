@@ -32,6 +32,22 @@ export const profile = {
 
 export const awards = [
   {
+    id: "award-03",
+    title: "SKT 알래프 우수상",
+    organization: "SK텔레콤",
+    date: "2026.11.12",
+    description: "K-뉴딜 아카데미 SKT ALEPH 부산 A반에서 네트워크·보안 인프라와 AI 활용 과정을 우수한 성과로 이수해 수상했습니다.",
+    image: "/images/award-skt-aleph-excellence.png",
+  },
+  {
+    id: "award-04",
+    title: "SKT 알래프 출석우수상",
+    organization: "SK텔레콤",
+    date: "2026.11.12",
+    description: "2026년 8월 11일부터 11월 12일까지 SKT ALEPH 부산 A반의 전 교육 일정에 빠짐없이 출석해 수상했습니다.",
+    image: "/images/award-skt-aleph-attendance.png",
+  },
+  {
     id: "award-01",
     title: "2025 BDIA 사이드 프로젝트 아이디어 상",
     organization: "부산광역시 주최 · 부산정보산업진흥원 주관",
