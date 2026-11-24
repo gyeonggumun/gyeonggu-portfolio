@@ -122,5 +122,16 @@ export const loop = {
       sources: [{ title: "HTTPS 이슈", url: issue(33) }, { title: "VM 복구 이슈", url: issue(36) }, { title: "DB 접근 이슈", url: issue(40) }, { title: "전체 장애 대응 이슈", url: issue(44) }, { title: "출발지 보완 PR", url: pull(65) }],
     },
     { layout: "videos", title: "인프라 시연 · 연결 분산과 웹 이중화" },
+    {
+      layout: "case-study",
+      title: "회고 · 한쪽 웹 노드를 껐을 때 요청은 어디로 가는가",
+      sections: [
+        { title: "발견한 문제", text: "두 노드에 같은 서비스를 올려도 장애가 난 노드에 요청이 계속 전달되면 사용자는 오류를 받습니다." },
+        { title: "해결 과정", text: "팀장 겸 인프라 담당으로 두 VM에 웹과 API를 배치했습니다. HAProxy가 HTTPS 준비 상태를 확인하도록 설정한 뒤, DB가 있는 PC2를 켜 둔 상태에서 PC1 VM을 중단했습니다." },
+        { title: "확인한 결과", text: "HAProxy에서 PC1은 DOWN, PC2는 UP으로 표시됐습니다. 이 조건에서 관측한 웹 요청 112건과 API 요청 112건은 모두 HTTP 200을 반환했습니다." },
+        { title: "배운 점", text: "정상 응답 수를 해석하려면 어떤 구성 요소를 중단했는지도 기록해야 합니다. 웹 노드 장애 시험과 DB 승격 시험을 구분해야 각각의 복구 범위를 설명할 수 있습니다." },
+      ],
+      figures: [],
+    },
   ],
 };

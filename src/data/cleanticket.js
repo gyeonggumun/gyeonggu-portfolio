@@ -153,5 +153,16 @@ export const cleanticket = {
       sources: [{ title: "공격 시나리오와 결과", url: `${repository}#공격-시나리오와-확인-결과` }, { title: "노션 테스트 자료", url: "https://app.notion.com/p/oreumi/IPS-IDS-384ebaa8982b80669d12ff48819eb77e" }],
     },
     { layout: "videos", title: "CleanTicket · 티켓팅 웹 서버 시연" },
+    {
+      layout: "case-study",
+      title: "회고 · 예매 요청과 탐지 경보를 대조할 수 있도록",
+      sections: [
+        { title: "발견한 문제", text: "예매 서버에 자동 요청이 들어왔을 때 검사 서버의 경보만 흩어져 있으면 어느 규칙이 언제 반응했는지 확인하기 어려웠습니다." },
+        { title: "해결 과정", text: "IDS/IPS와 로그 관제를 맡아 Snort 경보를 rsyslog를 거쳐 Graylog로 보냈습니다. 규칙 ID와 발생 시각, 주소로 이벤트를 대조했습니다." },
+        { title: "확인한 결과", text: "Graylog에서 반복 예매와 자동 브라우저 관련 이벤트를 확인했습니다. 대응 전 자동 요청 7건이 모두 예약 DB에 남았던 기록도 비교 기준으로 확보했습니다." },
+        { title: "배운 점", text: "경보는 탐지의 근거입니다. 차단 효과까지 검증하려면 같은 요청의 HTTP 응답과 예약 DB를 대조하고, 정상 예매도 함께 시험해야 합니다." },
+      ],
+      figures: [],
+    },
   ],
 };

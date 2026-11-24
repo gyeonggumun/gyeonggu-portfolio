@@ -97,5 +97,16 @@ export const moaSurvey = {
       sources: [{ title: "집계·테스트", url: source("src/surveys/resultAnalytics.test.js") }, { title: "페이지네이션", url: source("src/surveys/resultPagination.js") }, { title: "CSV", url: source("src/surveys/resultExport.js") }],
     },
     { layout: "videos", title: "시연영상 · 설문 관리와 응답 분석" },
+    {
+      layout: "case-study",
+      title: "회고 · 질문을 수정해도 기존 응답의 의미 지키기",
+      sections: [
+        { title: "발견한 문제", text: "응답을 받은 질문의 내용을 바꾸면 기존 답변이 다른 질문에 대한 답처럼 보입니다. 편집 도중 일부만 저장돼도 설문과 질문이 서로 어긋납니다." },
+        { title: "해결 과정", text: "응답이 있는 질문은 내용 변경을 제한하고 순서 변경은 허용했습니다. 설문 정보와 질문 변경은 DB에서 하나의 트랜잭션으로 처리했습니다." },
+        { title: "확인한 결과", text: "질문 검증에 실패하면 설문 정보 변경도 함께 취소됩니다. 제작자는 질문 순서를 조정하면서도 이미 수집한 답변과 원래 질문의 관계를 유지할 수 있습니다." },
+        { title: "배운 점", text: "편집 기능을 설계할 때는 저장 이후 그 데이터를 읽는 사람까지 생각해야 합니다. 이 프로젝트에서는 기존 답변을 같은 의미로 해석할 수 있는지가 수정 허용 기준이 됐습니다." },
+      ],
+      figures: [],
+    },
   ],
 };

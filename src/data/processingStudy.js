@@ -102,5 +102,16 @@ export const processingStudy = {
       sources: [{ title: "규모·회고", url: source("README.md") }, { title: "권한 모델", url: source("src/lib/appRoles.js") }, { title: "풀이 기록 RLS", url: source("supabase/migrations/20260923021001_create_practice_attempts.sql") }],
     },
     { layout: "videos", title: "시연영상 · 개념 학습에서 오답·개인 요약까지" },
+    {
+      layout: "case-study",
+      title: "회고 · 내가 고른 학습 카드만 PDF에 담기",
+      sections: [
+        { title: "발견한 문제", text: "학습자가 일부 카드를 숨긴 뒤 PDF를 받을 때, 화면과 출력물이 다르면 복습할 내용을 다시 골라야 합니다." },
+        { title: "해결 과정", text: "다운로드하는 시점에 선택 목록을 읽어 해당 카드만 새 PDF에 넣었습니다. 원본 자료의 SHA-256을 목록에 기록된 값과 비교해 버전도 확인했습니다." },
+        { title: "확인한 결과", text: "숨긴 카드 본문은 PDF에 들어가지 않습니다. 자료 버전이 달라 카드와 페이지의 대응을 보장할 수 없으면 생성을 중단합니다." },
+        { title: "배운 점", text: "내보내기 기능의 완성 기준은 파일이 열리는지에 더해, 사용자가 선택한 내용과 실제 파일의 내용이 일치하는지까지 포함해야 합니다." },
+      ],
+      figures: [],
+    },
   ],
 };
