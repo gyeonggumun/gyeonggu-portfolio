@@ -95,6 +95,7 @@ function BackgroundGroup({ title, label, entries, className = "" }) {
 
 export default function App() {
   const [activeProject, setActiveProject] = useState(null);
+  const otherProjects = projects.filter((project) => !project.featured);
   const featuredTeam = projects.filter(
     (project) => project.featured && project.category === "team",
   );
@@ -336,39 +337,31 @@ export default function App() {
               </span>
               <h2 id="archive-title">그 밖의 작업들</h2>
             </div>
-            <p>더 많은 프로젝트를 펼쳐 보세요.</p>
           </div>
-          {["team", "personal"].map((category) => {
-            const remaining = projects.filter(
-              (project) => !project.featured && project.category === category,
-            );
-            return (
-              <details className="archive-group" key={category}>
-                <summary>
-                  <span>
-                    {category === "team" ? "팀 프로젝트" : "개인 프로젝트"}
-                    <span className="archive-count">
-                      {String(remaining.length).padStart(2, "0")}
-                    </span>
-                  </span>
-                  <span className="archive-toggle">
-                    <span className="when-closed">펼쳐 보기</span>
-                    <span className="when-open">접기</span>
-                    <Icon name="down" size={18} />
-                  </span>
-                </summary>
-                <div className="project-grid archive-grid">
-                  {remaining.map((project) => (
-                    <ProjectCard
-                      key={project.id}
-                      project={project}
-                      onOpen={setActiveProject}
-                    />
-                  ))}
-                </div>
-              </details>
-            );
-          })}
+          <details className="archive-group">
+            <summary>
+              <span>
+                프로젝트 목록
+                <span className="archive-count">
+                  {String(otherProjects.length).padStart(2, "0")}
+                </span>
+              </span>
+              <span className="archive-toggle">
+                <span className="when-closed">펼쳐 보기</span>
+                <span className="when-open">접기</span>
+                <Icon name="down" size={18} />
+              </span>
+            </summary>
+            <div className="project-grid archive-grid">
+              {otherProjects.map((project) => (
+                <ProjectCard
+                  key={project.id}
+                  project={project}
+                  onOpen={setActiveProject}
+                />
+              ))}
+            </div>
+          </details>
         </section>
       </main>
       <footer className="site-footer" id="contact">
